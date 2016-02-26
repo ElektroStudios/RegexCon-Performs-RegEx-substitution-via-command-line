@@ -1,6 +1,6 @@
 # RegexCon for Windows
 
-<img src="http://i.imgur.com/IsWsvuG.png" align="left"/>
+<img src="http://i.imgur.com/IsWsvuG.png"/>
 
 ## What is RegexCon?
 *RegexCon* is a simple utility to perform a Regular Expression substitution.
@@ -27,7 +27,7 @@ Thanks in advance!
 
 ##Documentation
 
-<img src="http://i.imgur.com/vjplv7l.png" align="left"/>
+<img src="http://i.imgur.com/vjplv7l.png"/>
 
 ## Bugs and feature requests
 Do you have a bug or a feature request? Please use the [issue tracker](https://github.com/ElektroStudios/RegexCon/issues) and search for existing and closed issues. 
