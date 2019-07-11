@@ -14,18 +14,44 @@ I personally use *RegexCon* as a life-saver in a 3rd party file renamer that is 
 
 Sure you could find another scenario on which this tool will be usefull for you!
 
-## Donations
-Donations are useful and are always welcome!
+# **Donations**
 
-If you liked the job I've done then maybe you will consider to support for the motivation of this project by sending money.
+##### Through Paypal:
+If you like my work and want to support it, then please consider to deposit a donation through **Paypal** by clicking on the next button:
 
-[![Dontaions Account](http://i.imgur.com/LVKt3W5.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9SNEB7XURHXAS)
+[![Donataion Account](Images/Paypal.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY)
 
-[![Donations Amount](https://img.shields.io/badge/Current%20donations-0%24-red.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9SNEB7XURHXAS)
+[![Donataion Amount](https://img.shields.io/badge/Current%20donations-0%24-red.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY)
 
-Thanks in advance!
+You are free to specify whatever amount of money you wish. That money will be sent to my **Paypal** account.
 
-##Documentation
+##### Through Envato:
+If you are a .NET programmer, then maybe you would like to consider the purchase of 
+'**DevCase for .NET Framework**', a powerful set of APIs for .NET developers, created by me. 
+
+You can click the next button to go to the product specifications and the purchase page:
+
+[![DevCase for .NET Framework](Images/DevCase%20Banner.png)](https://codecanyon.net/item/elektrokit-class-library-for-net/19260282)
+
+Note that any source-code within the namespace 'DevCase' included in this **GitHub** repository, was freely extracted and distributed from the commercial library '**DevCase for .NET Framework**'.
+
+<u>**Thanks in advance for your consideration!**</u> :thumbsup:
+
+
+##### Through Envato:
+If you are a .NET programmer, then maybe you would like to consider the purchase of 
+'**DevCase for .NET Framework**', a powerful set of APIs for .NET developers, created by me. 
+
+You can click the next button to go to the product specifications and the purchase page:
+
+[![DevCase for .NET Framework](Images/DevCase%20Banner.png)](https://codecanyon.net/item/elektrokit-class-library-for-net/19260282)
+
+Note that any source-code within the namespace 'DevCase' included in this **GitHub** repository, was freely extracted and distributed from the commercial library '**DevCase for .NET Framework**'.
+
+<u>**Thanks in advance for your consideration!**</u> :thumbsup:
+
+
+## Documentation
 
 <img src="http://i.imgur.com/vjplv7l.png"/>
 
