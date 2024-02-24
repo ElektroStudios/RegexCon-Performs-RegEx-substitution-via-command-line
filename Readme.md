@@ -66,10 +66,10 @@ Download the latest release by clicking [here](https://github.com/ElektroStudios
 #### Usage examples
 ---------------------------------------------------------
 	( Regular string substitution. )
-	/I="Hello World" /E="^(.+)\s(.+)$" /S="$2 $1" /M=True
+	RegexCon.exe /I="Hello World" /E="^(.+)\s(.+)$" /S="$2 $1" /M=True
 
 	( Named-group string substitution. )
-	/I="Hello World" /E="^(?<one>.+)\s(?<two>.+)$" /S="${two} ${one}"
+	RegexCon.exe /I="Hello World" /E="^(?<one>.+)\s(?<two>.+)$" /S="${two} ${one}"
 
 ## 🔄 Change Log
 
