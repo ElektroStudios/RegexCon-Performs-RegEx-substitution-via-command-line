@@ -10,17 +10,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("RegExCon")> 
-<Assembly: AssemblyDescription("A command-line RegEx substitution tool")> 
-<Assembly: AssemblyCompany("Elektro Studios")> 
-<Assembly: AssemblyProduct("RegExCon")> 
-<Assembly: AssemblyCopyright("Copyright © Elektro Studios 2016")> 
+<Assembly: AssemblyTitle("RegExCon")>
+<Assembly: AssemblyDescription("A command-line app to perform Regular Expression (RegEx) string substitutions.")>
+<Assembly: AssemblyCompany("ElektroStudios")>
+<Assembly: AssemblyProduct("RegExCon")>
+<Assembly: AssemblyCopyright("Copyright © ElektroStudios 2016-2024")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("d4cae068-6f7f-40e3-9ebc-ffa977e0f7e5")> 
+<Assembly: Guid("d4cae068-6f7f-40e3-9ebc-ffa977e0f7e5")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -33,7 +33,7 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("1.1.0.0")>
+<Assembly: AssemblyFileVersion("1.1.0.0")>
 
 <Assembly: NeutralResourcesLanguageAttribute("en")> 

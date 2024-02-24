@@ -1,5 +1,5 @@
 ﻿' ***********************************************************************
-' Author   : Elektro
+' Author   : ElektroStudios
 ' Modified : 26-February-2016
 ' Usage    : Use *F##* as the ForeColor beginning delimiter, use *-F* to restore the console forecolor.
 '            Use *B##* as the BackColor beginning delimiter, use *-B* to restore the console BackColor.
@@ -85,39 +85,28 @@ Namespace UserInterface
         ''' Contains help information such as author name, application syntax and example usages.
         ''' <para></para>
         ''' These strings are color-delimited to print a colorized output console,
-        ''' using the <c>WriteColorText</c> methods written by Elektro.
+        ''' using the <c>WriteColorText</c> methods written by ElektroStudios.
         ''' </summary>
         ''' ----------------------------------------------------------------------------------------------------
         Public Shared ReadOnly Help As XElement =
             <Help>
-
-                <!-- Current process name -->
-                <!-- That means even when the user manually changes the executable name -->
-                <Process>*F7*<%= processName %>*-F*</Process>
-
                 <!-- Application title -->
-                <Title>RegExCon .:: By Elektro ::.</Title>
+                <Title>RegExCon .:: By ElektroStudios ::.</Title>
 
                 <!-- Application name -->
                 <Name>*F7*RegExCon*-F*</Name>
 
                 <!-- Application author -->
-                <Author>*f7*Elektro*-F*</Author>
+                <Author>*f7*ElektroStudios*-F*</Author>
 
                 <!-- Application version -->
-                <Version>*F7*1.0*-F*</Version>
+                <Version>*F7*1.1*-F*</Version>
 
                 <!-- Copyright information -->
-                <Copyright>*F7*© ElektroStudios 2016*-F*</Copyright>
+                <Copyright>*F7*Copyright © ElektroStudios 2016-2024*-F*</Copyright>
 
                 <!-- Website information -->
-                <Website>*F7*http://github.com/ElektroStudios*-F*</Website>
-
-                <!-- Skype contact information -->
-                <Skype>*F7*ElektroStudios*-F*</Skype>
-
-                <!-- Email contact information -->
-                <Email>*F7*ElektroStudios@ElHacker.Net*-F*</Email>
+                <Website>*F7*https://github.com/ElektroStudios/RegexCon-Performs-RegEx-substitution-via-command-line*-F*</Website>
 
                 <!-- Application Logotype -->
                 <Logo>
@@ -132,7 +121,7 @@ Namespace UserInterface
   *F10*| |              | |*F15* \___|\__, |\___/_/\_\*F10*| |              | |*F15* \___/|_| |_|
   *F10*| '--------------' |*F15*      __/ |           *F10*| '--------------' |             
   *F10* '----------------' *F15*     |___/            *F10* '----------------'              
-        *-F*</Logo>
+*-F*</Logo>
 
                 <!-- Application Logotype NOT colored -->
                 <Logo>
@@ -147,50 +136,47 @@ Namespace UserInterface
 | |              | | \___|\__, |\___/_/\_\| |              | | \___/|_| |_|
 | '--------------' |      __/ |           | '--------------' |             
  '----------------'      |___/             '----------------'                          
-            </Logo>
+</Logo>
 
 
                 <!-- Separator shape -->
                 <Separator>
-           *F10*------------------------------------------------------>>>>*-F*
-            </Separator>
+*F10*------------------------------------------------------>>>>*-F*</Separator>
 
                 <!-- Application Syntax -->
                 <Syntax>
-           *F11*[+]*-F* *F7*Syntax*-F*
-           *F11*---------------------------------------------------------*-F*
-           <%= processName %> *F10*/I=*F7*(input)*-F* *F10*/E=*F7*(expression)*-F* *F10*/S=*F7*(substitution)*-F*
-            </Syntax>
+*F11*[+]*-F* *F7*Syntax*-F*
+*F11*---------------------------------------------------------*-F*
+<%= processName %> *F10*/I=*F7*(input)*-F* *F10*/E=*F7*(expression)*-F* *F10*/S=*F7*(substitution)*-F*</Syntax>
 
                 <!-- Application Syntax (Additional Specifications) -->
                 <SyntaxExtra>
-           *F11*[+]*-F* *F7*Switches*-F*
-           *F11*---------------------------------------------------------*-F*
-           *F10*/Input        *F7*or *F10*/I*-F* *F3*| *F7*The input string.*-F*
-           *F10*/Expression   *F7*or *F10*/E*-F* *F3*| *F7*The regular expression.*-F*
-           *F10*/Substitution *F7*or *F10*/S*-F* *F3*| *F7*The substitution format.*-F*
-           *F10*/MatchCase    *F7*or *F10*/M*-F* *F3*| *F7*The character sensitiveness.*-F*
-           *F10*/?                *F3*  | *F7*Display this help.*-F*
+*F11*[+]*-F* *F7*Switches*-F*
+*F11*---------------------------------------------------------*-F*
+*F10*/Input        *F7*or *F10*/I*-F* *F3*| *F7*The input string.*-F*
+*F10*/Expression   *F7*or *F10*/E*-F* *F3*| *F7*The regular expression.*-F*
+*F10*/Substitution *F7*or *F10*/S*-F* *F3*| *F7*The substitution string.*-F*
+*F10*/MatchCase    *F7*or *F10*/M*-F* *F3*| *F7*Matches characters in a case-sensitive manner.*-F*
+*F10*/?                *F3*  | *F7*Shows this help.*-F*
 
-
-           *F11*[+]*-F* *F7*Switch value types*-F*
-           *F11*---------------------------------------------------------*-F*
-           *F10*/Input        *F7*or *F10*/I*-F* *F3*| *F7*Any string*-F*
-           *F10*/Expression   *F7*or *F10*/E*-F* *F3*| *F7*Any string*-F*
-           *F10*/Substitution *F7*or *F10*/S*-F* *F3*| *F7*Any string*-F*
-           *F10*/MatchCase    *F7*or *F10*/M*-F* *F3*| *F7*True*F3*/*F7*False*-F*
-            </SyntaxExtra>
+*F11*[+]*-F* *F7*Switch value types*-F*
+*F11*---------------------------------------------------------*-F*
+*F10*/Input        *F7*or *F10*/I*-F* *F3*| *F7*Any string*-F*
+*F10*/Expression   *F7*or *F10*/E*-F* *F3*| *F7*Any string*-F*
+*F10*/Substitution *F7*or *F10*/S*-F* *F3*| *F7*Any string*-F*
+*F10*/MatchCase    *F7*or *F10*/M*-F* *F3*| *F7*True*F3*/*F7*False*-F*
+</SyntaxExtra>
 
                 <!-- Application Usage Examples -->
                 <UsageExamples>
-           *F11*[+]*-F* *F7*Usage examples*-F*
-           *F11*---------------------------------------------------------*-F*
-           *F7*( Simple substitution. )*-F*
-           /I="Hello World" /E="^(.+)\s(.+)$" /S="$2 $1" /M=True
+*F11*[+]*-F* *F7*Usage examples*-F*
+*F11*---------------------------------------------------------*-F*
+*F7*(Regular string substitution)*-F*
+/I="Hello World" /E="^(.+)\s(.+)$" /S="$2 $1" /M=True
 
-           *F7*( Simple named-group substitution. )*-F*
-           /I="Hello World" /E="^(?&lt;one&gt;.+)\s(?&lt;two&gt;.+)$" /S="${two} ${one}"
-            </UsageExamples>
+*F7*(Named-group string substitution)*-F*
+/I="Hello World" /E="^(?&lt;one&gt;.+)\s(?&lt;two&gt;.+)$" /S="${two} ${one}"
+</UsageExamples>
 
             </Help>
 
@@ -204,14 +190,11 @@ Namespace UserInterface
             With sb
                 .AppendLine(HelpSection.Help.<Logo>.Value)
                 .AppendLine(HelpSection.Help.<Separator>.Value)
-                .AppendLine(String.Format("*F7*            Executable name.......: {0}", HelpSection.Help.<Process>.Value))
-                .AppendLine(String.Format("*F7*            Application name......: {0}", HelpSection.Help.<Name>.Value))
-                .AppendLine(String.Format("*F7*            Application version...: {0}", HelpSection.Help.<Version>.Value))
-                .AppendLine(String.Format("*F7*            Application author....: {0}", HelpSection.Help.<Author>.Value))
-                .AppendLine(String.Format("*F7*            Application copyright.: {0}", HelpSection.Help.<Copyright>.Value))
-                .AppendLine(String.Format("*F7*            Author website........: {0}", HelpSection.Help.<Website>.Value))
-                .AppendLine(String.Format("*F7*            Author Skype..........: {0}", HelpSection.Help.<Skype>.Value))
-                .AppendLine(String.Format("*F7*            Author Email..........: {0}", HelpSection.Help.<Email>.Value))
+                .AppendLine(String.Format("*F7*Name......: {0}", HelpSection.Help.<Name>.Value))
+                .AppendLine(String.Format("*F7*Version...: {0}", HelpSection.Help.<Version>.Value))
+                .AppendLine(String.Format("*F7*Author....: {0}", HelpSection.Help.<Author>.Value))
+                .AppendLine(String.Format("*F7*Copyright.: {0}", HelpSection.Help.<Copyright>.Value))
+                .AppendLine(String.Format("*F7*Website...: {0}", HelpSection.Help.<Website>.Value))
                 .AppendLine(HelpSection.Help.<Separator>.Value)
                 .AppendLine(HelpSection.Help.<Syntax>.Value)
                 .AppendLine(HelpSection.Help.<SyntaxExtra>.Value)

@@ -1,72 +1,105 @@
-# RegexCon for Windows
+<!-- Common Project Tags:
+command-line 
+console-applications 
+dotnet 
+dotnet-core 
+netcore 
+netframework 
+netframework48 
+tool 
+tools 
+vbnet 
+visualstudio 
+windows 
+windows-app 
+windows-application 
+windows-applications 
+windows-forms 
+winforms 
+ -->
 
-<img src="http://i.imgur.com/IsWsvuG.png"/>
+# RegexCon
 
-## What is RegexCon?
-*RegexCon* is a simple utility to perform a Regular Expression substitution.
+### Command-line app to perform Regular Expression (RegEx) string substitutions.
 
-*RegexCon* is focused in .Net regex pattern syntax usage, this means it supports the powerfull Regex motor at the moment, and any common pattern syntax of other languages will work too, but be aware that programming languages has their own RegEx imlementations whith minor changes (and/or limitations) in their syntax, for example a PHP named group is not written in the same way as in .Net, the syntax adaptation is responsability of the end-user.
+![logo](/Images/logo.png)
 
-## When to use it?
-This tool could be used in a for-loop of any language to perform file renamings.
+------------------
 
-I personally use *RegexCon* as a life-saver in a 3rd party file renamer that is written in a language that has RegEx limitations, but it support external apps, so I run **RegexCon** to support this lack by letting my app perform the regex substitution.
+## 👋 Introduction
 
-Sure you could find another scenario on which this tool will be usefull for you!
+I decided to develop **RegexCon** as a solution for a third-party application that is written in a scripting language with limited Regex capabilities, but that third-party application supports running external apps, and this is where **RegexCon** comes into play for me, bridging the gap by enabling that third-party application to execute regular expression substitutions as required.
 
-# **Donations**
+**RegexCon** could be used, for example, in a for-loop of any programming language to perform file renamings.
 
-##### Through Paypal:
-If you like my work and want to support it, then please consider to deposit a donation through **Paypal** by clicking on the next button:
+I'm convinced you would find additional scenarios where this tool proves invaluable to you!.
 
-[![Donataion Account](Images/Paypal.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY)
+## ‼️ Limitations
 
-[![Donataion Amount](https://img.shields.io/badge/Current%20donations-0%24-red.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY)
+**RegexCon** relies on the .NET regex engine and it utilizes its pattern syntax. While most common regex pattern syntax from other languages will work properly with **RegexCon**, it's important to note that each programming language has its own regex implementations, which may include minor syntax differences and/or limitations. For instance, a named group in PHP is written differently than in .NET. The responsibility for syntax adaptation lies with the end user.
 
-You are free to specify whatever amount of money you wish. That money will be sent to my **Paypal** account.
+## 📝 Requirements
 
-##### Through Envato:
-If you are a .NET programmer, then maybe you would like to consider the purchase of 
-'**DevCase for .NET Framework**', a powerful set of APIs for .NET developers, created by me. 
+- Microsoft Windows OS.
 
-You can click the next button to go to the product specifications and the purchase page:
+## 🤖 Getting Started
 
-[![DevCase for .NET Framework](Images/DevCase%20Banner.png)](https://codecanyon.net/item/elektrokit-class-library-for-net/19260282)
+Download the latest release by clicking [here](https://github.com/ElektroStudios/RegexCon-Performs-RegEx-substitution-via-command-line/releases/latest),
 
-Note that any source-code within the namespace 'DevCase' included in this **GitHub** repository, was freely extracted and distributed from the commercial library '**DevCase for .NET Framework**'.
+#### Syntax
+    RegexCon.exe /I=(input) /E=(expression) /S=(substitution)
 
-<u>**Thanks in advance for your consideration!**</u> :thumbsup:
+#### Switches
+    /Input        or /I | The input string.
+    /Expression   or /E | The regular expression.
+    /Substitution or /S | The substitution string.
+    /MatchCase    or /M | Matches characters in a case-sensitive manner.
+    /?                  | Shows this help.
 
+#### Switch value types
+---------------------------------------------------------
+	/Input        or /I | Any string
+	/Expression   or /E | Any string
+	/Substitution or /S | Any string
+	/MatchCase    or /M | True/False
 
-##### Through Envato:
-If you are a .NET programmer, then maybe you would like to consider the purchase of 
-'**DevCase for .NET Framework**', a powerful set of APIs for .NET developers, created by me. 
+#### Usage examples
+---------------------------------------------------------
+	( Regular string substitution. )
+	/I="Hello World" /E="^(.+)\s(.+)$" /S="$2 $1" /M=True
 
-You can click the next button to go to the product specifications and the purchase page:
+	( Named-group string substitution. )
+	/I="Hello World" /E="^(?<one>.+)\s(?<two>.+)$" /S="${two} ${one}"
 
-[![DevCase for .NET Framework](Images/DevCase%20Banner.png)](https://codecanyon.net/item/elektrokit-class-library-for-net/19260282)
+## 🔄 Change Log
 
-Note that any source-code within the namespace 'DevCase' included in this **GitHub** repository, was freely extracted and distributed from the commercial library '**DevCase for .NET Framework**'.
+Explore the complete list of changes, bug fixes, and improvements across different releases by clicking [here](/Docs/CHANGELOG.md).
 
-<u>**Thanks in advance for your consideration!**</u> :thumbsup:
+## ⚠️ Disclaimer:
 
+This Work (the repository and the content provided in) is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the Work or the use or other dealings in the Work.
 
-## Documentation
+## 💪 Contributing
 
-<img src="http://i.imgur.com/vjplv7l.png"/>
+Your contribution is highly appreciated!. If you have any ideas, suggestions, or encounter issues, feel free to open an issue by clicking [here](https://github.com/ElektroStudios/RegexCon-Performs-RegEx-substitution-via-command-line/issues/new/choose). 
 
-## Bugs and feature requests
-Do you have a bug or a feature request? Please use the [issue tracker](https://github.com/ElektroStudios/RegexCon/issues) and search for existing and closed issues. 
+Your input helps make this Work better for everyone. Thank you for your support! 🚀
 
-If your problem or request isn't addressed yet, go ahead and [open a new issue](https://github.com/ElektroStudios/RegexCon/issues/new). 
+## 💰 Beyond Contribution 
 
-## Contributing
-You can also get involved and [fork the repository](https://github.com/ElektroStudios/RegexCon/fork) to submit your own pull requests.
+This work is distributed for educational purposes and without any profit motive. However, if you find value in my efforts and wish to support and motivate my ongoing work, you may consider contributing financially through the following options:
 
-No coding guidelines to follow (by the moment).
+ - ### Paypal:
+    You can donate any amount you like via **Paypal** by clicking on this button:
 
-## Creators
-* [Christian Soriano aka. Elektro](https://www.facebook.com/christian.sorianogonzalez) - for the initial conception of the toolkit and core contributor.
+    [![Donation Account](Images/Paypal_Donate.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY)
 
-## Copyright
-Code and documentation copyright 2014-2016 ElektroStudios. 
+ - ### Envato Market:
+   If you are a .NET developer, you may want to explore '**DevCase Class Library for .NET**', a huge set of APIs that I have on sale.
+   Almost all reusable code that you can find across my works is condensed, refined and provided through DevCase Class Library.
+
+    Check out the product:
+    
+   [![DevCase Class Library for .NET](Images/DevCase_Banner.png)](https://codecanyon.net/item/elektrokit-class-library-for-net/19260282)
+
+<u>**Your support means the world to me! Thank you for considering it!**</u> 👍
