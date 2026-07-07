@@ -1,4 +1,4 @@
-# RegexCon Change Log 📋
+﻿# RegexCon Change Log 📋
 
 ## v1.1 (2024) *(current)* 🆕
 #### 🌟 Improvements:
