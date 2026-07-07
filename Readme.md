@@ -88,30 +88,27 @@ Whether you pipe data into it inside a rigid Windows batch file, use it within a
 
 ## ⚙️ Usage
 
-#### Syntax
-    RegexCon.exe /I=(input) /E=(expression) /S=(substitution)
+### Syntax
+```cmd
+RegexCon.exe /I=(input) /E=(expression) /S=(substitution) [/M=(true|false)]
+```
 
-#### Switches
-    /Input        or /I | The input string.
-    /Expression   or /E | The regular expression.
-    /Substitution or /S | The substitution string.
-    /MatchCase    or /M | Matches characters in a case-sensitive manner.
-    /?                  | Shows this help.
+### Available Switches
 
-#### Switch value types
----------------------------------------------------------
-	/Input        or /I | Any string
-	/Expression   or /E | Any string
-	/Substitution or /S | Any string
-	/MatchCase    or /M | True/False
+| Long Switch | Short Switch | Expected Value Type | Description |
+| :--- | :---: | :---: | :--- |
+| `/Input` | `/I` | String | The input string to be processed. |
+| `/Expression` | `/E` | String | The regular expression pattern. |
+| `/Substitution` | `/S` | String | The substitution or replacement string. |
+| `/MatchCase` | `/M` | Boolean (`True` / `False`) | Enables case-sensitive matching. |
+| `/?` | — | — | Displays the help menu. |
 
-#### Usage examples
----------------------------------------------------------
-	( Regular string substitution. )
-	RegexCon.exe /I="Hello World" /E="^(.+)\s(.+)$" /S="$2 $1" /M=True
+### Usage Examples
 
-	( Named-group string substitution. )
-	RegexCon.exe /I="Hello World" /E="^(?<one>.+)\s(?<two>.+)$" /S="${two} ${one}"
+| Scenario | Command |
+| :--- | :--- |
+| **Regular string substitution** | `RegexCon.exe /I="Hello World" /E="^(.+)\s(.+)$" /S="$2 $1" /M=True` |
+| **Named-group string substitution** | `RegexCon.exe /I="Hello World" /E="^(?<one>.+)\s(?<two>.+)$" /S="${two} ${one}"` |
 
 ## 🔄 Change Log
 
