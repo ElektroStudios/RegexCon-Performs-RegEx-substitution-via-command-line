@@ -1,6 +1,6 @@
 ﻿' ***********************************************************************
 ' Author   : Elektro
-' Modified : 26-February-2016
+' Modified : 07-November-2026
 ' ***********************************************************************
 
 #Region " Option Statements "
@@ -12,8 +12,6 @@ Option Infer Off
 #End Region
 
 #Region " Imports "
-
-Imports System.Text.RegularExpressions
 
 Imports RegexCon.Logic
 Imports RegexCon.Tools
@@ -39,15 +37,20 @@ Namespace UserInterface
                 .Add(Parameters.ParamMatchCase)
             End With
 
-            Parsers.ParseArguments(params, AddressOf ErrorCallbacks.OnSyntaxError, AddressOf ErrorCallbacks.OnMissingParameterRequired)
+            Parsers.ParseArguments(params,
+                                   AddressOf ErrorCallbacks.OnSyntaxError,
+                                   AddressOf ErrorCallbacks.OnMissingParameterRequired,
+                                   AddressOf ErrorCallbacks.OnDuplicatedParameter,
+                                   AddressOf ErrorCallbacks.OnUnknownArgument)
 
-            If (Validate) AndAlso Not RegExUtil.ValidateExpression(Fields.Expression) Then
+            If String.IsNullOrEmpty(Fields.Expression) Then
+                ErrorCallbacks.OnEmptyExpression()
+
+            ElseIf (Validate) AndAlso Not RegExUtil.ValidateExpression(Fields.Expression) Then
                 ErrorCallbacks.OnRegExValidationFailed(Fields.Expression)
 
             Else
-                Fields.Rgx = New Regex(Fields.Expression, If(Fields.MatchCase, RegexOptions.None, RegexOptions.IgnoreCase))
-
-                Console.WriteLine(Rgx.Replace(Fields.Input, Fields.Substitution))
+                Console.WriteLine(RegExUtil.Substitute(Fields.Input, Fields.Expression, Fields.Substitution, Fields.MatchCase))
                 Environment.Exit(exitCode:=0)
 
             End If

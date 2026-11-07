@@ -1,6 +1,6 @@
 ﻿' ***********************************************************************
 ' Author   : Elektro
-' Modified : 26-February-2016
+' Modified : 07-November-2026
 ' ***********************************************************************
 
 #Region " Public Members Summary "
@@ -8,9 +8,9 @@
 #Region " Methods "
 
 ' CliUtil.WriteColorText(String, Char())
-' CliUtil.WriteColorText(String, ConsoleColor, ConsoleColor)
+' CliUtil.WriteColorText(String, ConsoleColor?, ConsoleColor?)
 ' CliUtil.WriteColorTextLine(String, Char())
-' CliUtil.WriteColorTextLine(String, ConsoleColor, ConsoleColor)
+' CliUtil.WriteColorTextLine(String, ConsoleColor?, ConsoleColor?)
 
 #End Region
 
@@ -112,6 +112,19 @@ Namespace Tools
         Public Shared Sub WriteColorText(ByVal text As String,
                                          ByVal delimiters As Char())
 
+            If text Is Nothing Then
+                Throw New ArgumentNullException(paramName:=NameOf(text))
+            End If
+
+            If delimiters Is Nothing Then
+                Throw New ArgumentNullException(paramName:=NameOf(delimiters))
+            End If
+
+            If (delimiters.Length < 1) OrElse (delimiters.Length > 2) Then
+                Throw New ArgumentException(message:="A set of 1 or 2 delimiters is required.",
+                                            paramName:=NameOf(delimiters))
+            End If
+
             ' Save the current console colors to later restore them.
             Dim oldForedColor As ConsoleColor = Console.ForegroundColor
             Dim oldBackColor As ConsoleColor = Console.BackgroundColor
@@ -169,25 +182,29 @@ Namespace Tools
         ''' </param>
         ''' 
         ''' <param name="foreColor">
-        ''' The text color.
+        ''' The text color, or <see langword="Nothing"/> to keep the current text color.
         ''' </param>
         ''' 
         ''' <param name="backColor">
-        ''' The background color.
+        ''' The background color, or <see langword="Nothing"/> to keep the current background color.
         ''' </param>
         ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shared Sub WriteColorText(ByVal text As String,
-                                         ByVal foreColor As ConsoleColor,
-                                         ByVal backColor As ConsoleColor)
+                                         ByVal foreColor As ConsoleColor?,
+                                         ByVal backColor As ConsoleColor?)
+
+            If text Is Nothing Then
+                Throw New ArgumentNullException(paramName:=NameOf(text))
+            End If
 
             ' Save the current console colors to later restore them.
             Dim oldForeColor As ConsoleColor = Console.ForegroundColor
             Dim oldBackColor As ConsoleColor = Console.BackgroundColor
 
-            ' Set the new console colors.
-            Console.ForegroundColor = If(foreColor = Nothing, oldForeColor, foreColor)
-            Console.BackgroundColor = If(backColor = Nothing, oldBackColor, backColor)
+            ' Set the new console colors ("Nothing" keeps the current color).
+            Console.ForegroundColor = foreColor.GetValueOrDefault(oldForeColor)
+            Console.BackgroundColor = backColor.GetValueOrDefault(oldBackColor)
 
             ' Print the text.
             Console.Write(text)
@@ -210,7 +227,7 @@ Namespace Tools
         ''' <example> This is a code example.
         ''' <code>
         ''' WriteColorTextLine("{B15}{F12} Hello World! {-F}{-B}", {"{"c, "}"c})
-        ''' WriteColorTextLine(String.Format("*B15**F12* {0} *F0*{1} *-F**-B*", "Hello", "World!"), {"*"c})
+        ''' WriteColorTextLine($"*B15**F12* {"Hello"} *F0*{"World!"} *-F**-B*", {"*"c})
         ''' </code>
         ''' </example>
         ''' ----------------------------------------------------------------------------------------------------
@@ -226,7 +243,11 @@ Namespace Tools
         Public Shared Sub WriteColorTextLine(ByVal text As String,
                                              ByVal delimiters As Char())
 
-            CliUtil.WriteColorText(text & Environment.NewLine, delimiters)
+            If text Is Nothing Then
+                Throw New ArgumentNullException(paramName:=NameOf(text))
+            End If
+
+            CliUtil.WriteColorText($"{text}{Environment.NewLine}", delimiters)
 
         End Sub
 
@@ -247,19 +268,23 @@ Namespace Tools
         ''' </param>
         ''' 
         ''' <param name="foreColor">
-        ''' The text color.
+        ''' The text color, or <see langword="Nothing"/> to keep the current text color.
         ''' </param>
         ''' 
         ''' <param name="backColor">
-        ''' The background color.
+        ''' The background color, or <see langword="Nothing"/> to keep the current background color.
         ''' </param>
         ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shared Sub WriteColorTextLine(ByVal text As String,
-                                             ByVal foreColor As ConsoleColor,
-                                             ByVal backColor As ConsoleColor)
+                                             ByVal foreColor As ConsoleColor?,
+                                             ByVal backColor As ConsoleColor?)
 
-            CliUtil.WriteColorText(text & Environment.NewLine, foreColor, backColor)
+            If text Is Nothing Then
+                Throw New ArgumentNullException(paramName:=NameOf(text))
+            End If
+
+            CliUtil.WriteColorText($"{text}{Environment.NewLine}", foreColor, backColor)
 
         End Sub
 

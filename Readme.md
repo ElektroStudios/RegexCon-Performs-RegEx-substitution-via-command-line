@@ -98,9 +98,9 @@ RegexCon.exe /I=(input) /E=(expression) /S=(substitution) [/M=(true|false)]
 | Long Switch | Short Switch | Expected Value Type | Description |
 | :--- | :---: | :---: | :--- |
 | `/Input` | `/I` | String | The input string to be processed. |
-| `/Expression` | `/E` | String | The regular expression pattern. |
+| `/Expression` | `/E` | String (non-empty) | The regular expression pattern. |
 | `/Substitution` | `/S` | String | The substitution or replacement string. |
-| `/MatchCase` | `/M` | Boolean (`True` / `False`) | Enables case-sensitive matching. |
+| `/MatchCase` | `/M` | Boolean (`True` / `False`) | Enables case-sensitive matching (default: `True`). |
 | `/?` | — | — | Displays the help menu. |
 
 ### Usage Examples
@@ -109,6 +109,13 @@ RegexCon.exe /I=(input) /E=(expression) /S=(substitution) [/M=(true|false)]
 | :--- | :--- |
 | **Regular string substitution** | `RegexCon.exe /I="Hello World" /E="^(.+)\s(.+)$" /S="$2 $1" /M=True` |
 | **Named-group string substitution** | `RegexCon.exe /I="Hello World" /E="^(?<one>.+)\s(?<two>.+)$" /S="${two} ${one}"` |
+
+### Exit Codes
+
+| Exit Code | Description |
+| :---: | :--- |
+| `0` | Success. The substitution result is written to the standard output (or the help menu is displayed). |
+| `1` | Error (unknown argument, duplicated or missing parameter, syntax error, or empty/invalid expression). The error message is written to the standard error. |
 
 ## 🔄 Change Log
 

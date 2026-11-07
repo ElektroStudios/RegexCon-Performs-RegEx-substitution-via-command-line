@@ -1,6 +1,6 @@
 ﻿' ***********************************************************************
 ' Author   : Elektro
-' Modified : 26-February-2016
+' Modified : 07-November-2026
 ' ***********************************************************************
 
 #Region " Option Statements "
@@ -13,8 +13,6 @@ Option Infer Off
 
 #Region " Imports "
 
-Imports System.Text.RegularExpressions
-
 Imports RegexCon.Types
 
 #End Region
@@ -26,7 +24,6 @@ Namespace Logic
     Public Module Fields
 
         Public Params As CommandlineParameterCollection
-        Public Rgx As Regex
         Public ReadOnly Validate As Boolean = True
 
         Public Input As String

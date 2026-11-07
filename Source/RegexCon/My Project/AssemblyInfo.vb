@@ -2,6 +2,7 @@
 
 Imports System
 Imports System.Reflection
+Imports System.Runtime.CompilerServices
 Imports System.Runtime.InteropServices
 
 ' General Information about an assembly is controlled through the following 
@@ -14,10 +15,13 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("A command-line app to perform Regular Expression (RegEx) string substitutions.")>
 <Assembly: AssemblyCompany("ElektroStudios")>
 <Assembly: AssemblyProduct("RegExCon")>
-<Assembly: AssemblyCopyright("Copyright © ElektroStudios 2016-2024")>
+<Assembly: AssemblyCopyright("Copyright © ElektroStudios 2016-2026")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)> 
+
+' Exposes the Friend members to the unit test project.
+<Assembly: InternalsVisibleTo("RegexCon.Tests")>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
 <Assembly: Guid("d4cae068-6f7f-40e3-9ebc-ffa977e0f7e5")>
@@ -33,7 +37,7 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.1.0.0")>
-<Assembly: AssemblyFileVersion("1.1.0.0")>
+<Assembly: AssemblyVersion("1.2.0.0")>
+<Assembly: AssemblyFileVersion("1.2.0.0")>
 
 <Assembly: NeutralResourcesLanguageAttribute("en")> 

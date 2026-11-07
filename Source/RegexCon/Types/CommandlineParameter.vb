@@ -1,6 +1,6 @@
 ﻿' ***********************************************************************
 ' Author   : Elektro
-' Modified : 26-February-2016
+' Modified : 07-November-2026
 ' ***********************************************************************
 
 #Region " Public Members Summary "
@@ -26,150 +26,37 @@
 
 #Region " Usage Examples "
 
-' Module Module1
-' 
-'     Private ReadOnly cmd1 As New CommandlineParameter With
-'     {
-'         .Name = "/Switch1",
-'         .Separator = "="c,
-'         .DefaultValue = "Hello World",
-'         .IsOptional = False
-'     }
-' 
-'     Private ReadOnly cmd2 As New CommandlineParameter With
-'     {
-'         .Name = "/Switch2",
-'         .Separator = "="c,
-'         .DefaultValue = False,
-'         .IsOptional = True
-'     }
-' 
-'     Dim cmds As CommandlineParameter() = {cmd1, cmd2}
-' 
-'     Sub Main()
-' 
-'         ParseArguments(cmds, AddressOf Cmd_OnSyntaxError, AddressOf Cmd_OnMissingParameterRequired)
-' 
-'     End Sub
-' 
-'     ' ----------------------------------------------------------------------------------------------------
-'     ' <summary>
-'     ' Loop through all the command-line arguments of this application.
-'     ' </summary>
-'     ' ----------------------------------------------------------------------------------------------------
-'     ' <param name="cmds">
-'     ' The commandline parameters.
-'     ' </param>
-'     ' 
-'     ' <param name="callbackSyntaxError">
-'     ' An encapsulated method that is invoked if a syntax error is found in one of the arguments.
-'     ' </param>
-'     ' 
-'     ' <param name="callbackMissingRequired">
-'     ' An encapsulated method that is invoked if a required parameter is missing in the arguments.
-'     ' </param>
-'     ' ----------------------------------------------------------------------------------------------------
-'     Private Sub ParseArguments(ByRef cmds As CommandlineParameter(),
-'                                ByVal callbackSyntaxError As Action(Of CommandlineParameter),
-'                                ByVal callbackMissingRequired As Action(Of CommandlineParameter))
-' 
-'         ParseArguments(cmds, Environment.GetCommandLineArgs.Skip(1), callbackSyntaxError, callbackMissingRequired)
-' 
-'     End Sub
-' 
-'     ' ----------------------------------------------------------------------------------------------------
-'     ' <summary>
-'     ' Loop through all the command-line arguments of this application.
-'     ' </summary>
-'     ' ----------------------------------------------------------------------------------------------------
-'     ' <param name="cmds">
-'     ' The commandline parameters.
-'     ' </param>
-'     ' 
-'     ' <param name="args">
-'     ' The collection of commandline arguments to examine.
-'     ' </param>
-'     ' 
-'     ' <param name="callbackSyntaxError">
-'     ' An encapsulated method that is invoked if a syntax error is found in one of the arguments.
-'     ' </param>
-'     ' 
-'     ' <param name="callbackMissingRequired">
-'     ' An encapsulated method that is invoked if a required parameter is missing in the arguments.
-'     ' </param>
-'     ' ----------------------------------------------------------------------------------------------------
-'     Private Sub ParseArguments(ByRef cmds As CommandlineParameter(),
-'                                ByVal args As IEnumerable(Of String),
-'                                ByVal callbackSyntaxError As Action(Of CommandlineParameter),
-'                                ByVal callbackMissingRequired As Action(Of CommandlineParameter))
-' 
-'         Dim cmdRequired As List(Of CommandlineParameter) =
-'             (From cmd As CommandlineParameter In cmds
-'              Where Not cmd.IsOptional).ToList
-' 
-'         For Each arg As String In args
-' 
-'             For Each cmd As CommandlineParameter In cmds
-' 
-'                 If arg.StartsWith(cmd.Name, StringComparison.OrdinalIgnoreCase) Then
-' 
-'                     If Not arg.Contains(cmd.Separator) Then
-'                         callbackSyntaxError.Invoke(cmd)
-'                         Exit Sub
-' 
-'                     Else
-'                         Dim value As String = arg.Substring(arg.IndexOf(cmd.Separator) + 1)
-' 
-'                         If (cmdRequired.Contains(cmd)) Then
-'                             cmdRequired.Remove(cmd)
-'                         End If
-' 
-'                         If String.IsNullOrEmpty(value) Then
-'                             cmd.Value = cmd.DefaultValue
-'                             Continue For
-' 
-'                         Else
-'                             Try
-'                                 cmd.Value = Convert.ChangeType(value, cmd.DefaultValue.GetType())
-'                                 Continue For
-' 
-'                             Catch ex As Exception
-'                                 callbackSyntaxError.Invoke(cmd)
-'                                 Exit Sub
-' 
-'                             End Try
-' 
-'                         End If
-' 
-'                     End If
-' 
-'                 End If
-' 
-'             Next cmd
-' 
-'         Next arg
-' 
-'         If (cmdRequired.Any) Then
-'             callbackMissingRequired.Invoke(cmdRequired.First)
-'         End If
-' 
-'     End Sub
-' 
-'     Private Sub Cmd_OnSyntaxError(ByVal cmd As CommandlineParameter)
-' 
-'         Console.WriteLine(String.Format("[X] Syntax error in parameter: {0}", cmd.Name))
-'         Environment.Exit(exitCode:=1)
-' 
-'     End Sub
-' 
-'     Private Sub Cmd_OnMissingParameterRequired(ByVal cmd As CommandlineParameter)
-' 
-'         Console.WriteLine(String.Format("[X] Parameter required: {0}", cmd.Name))
-'         Environment.Exit(exitCode:=1)
-' 
-'     End Sub
-' 
-' End Module
+' Private ReadOnly cmd1 As New CommandlineParameter(Of String) With {
+'     .Name = "/Switch1",
+'     .ShortName = "/S1",
+'     .Separator = "="c,
+'     .DefaultValue = "Hello World",
+'     .IsOptional = False
+' }
+'
+' Private ReadOnly cmd2 As New CommandlineParameter(Of Boolean) With {
+'     .Name = "/Switch2",
+'     .Separator = "="c,
+'     .DefaultValue = False,
+'     .IsOptional = True
+' }
+'
+' Sub Main()
+'
+'     Dim cmds As New CommandlineParameterCollection()
+'     cmds.AddRange({cmd1, cmd2})
+'
+'     ' See the "Logic.Parsers" module for the argument parser implementation.
+'     Parsers.ParseArguments(cmds,
+'                            AddressOf ErrorCallbacks.OnSyntaxError,
+'                            AddressOf ErrorCallbacks.OnMissingParameterRequired,
+'                            AddressOf ErrorCallbacks.OnDuplicatedParameter,
+'                            AddressOf ErrorCallbacks.OnUnknownArgument)
+'
+'     Dim switch1 As String = CStr(cmds("/Switch1").Value)
+'     Dim switch2 As Boolean = CBool(cmds("/Switch2").Value)
+'
+' End Sub
 
 #End Region
 
@@ -201,150 +88,23 @@ Namespace Types
     ''' ----------------------------------------------------------------------------------------------------
     ''' <example> This is a code example.
     ''' <code>
-    ''' Module Module1
+    ''' Dim cmd1 As New CommandlineParameter(Of String) With {
+    '''     .Name = "/Switch1",
+    '''     .ShortName = "/S1",
+    '''     .Separator = "="c,
+    '''     .DefaultValue = "Hello World",
+    '''     .IsOptional = False
+    ''' }
     ''' 
-    '''     Private ReadOnly cmd1 As New CommandlineParameter(Of String) With
-    '''     {
-    '''         .Name = "/Switch1",
-    '''         .Separator = "="c,
-    '''         .DefaultValue = "Hello World",
-    '''         .IsOptional = False
-    '''     }
+    ''' Dim cmds As New CommandlineParameterCollection()
+    ''' cmds.Add(cmd1)
     ''' 
-    '''     Private ReadOnly cmd2 As New CommandlineParameter With
-    '''     {
-    '''         .Name = "/Switch2",
-    '''         .Separator = "="c,
-    '''         .DefaultValue = False,
-    '''         .IsOptional = True
-    '''     }
-    ''' 
-    '''     Dim cmds As CommandlineParameter() = {cmd1, cmd2}
-    ''' 
-    '''     Sub Main()
-    ''' 
-    '''         ParseArguments(cmds, AddressOf Cmd_OnSyntaxError, AddressOf Cmd_OnMissingParameterRequired)
-    ''' 
-    '''     End Sub
-    ''' 
-    '''     ''' ----------------------------------------------------------------------------------------------------
-    '''     ''' &lt;summary&gt;
-    '''     ''' Loop through all the command-line arguments of this application.
-    '''     ''' &lt;/summary&gt;
-    '''     ''' ----------------------------------------------------------------------------------------------------
-    '''     ''' &lt;param name="cmds"&gt;
-    '''     ''' The commandline parameters.
-    '''     ''' &lt;/param>
-    '''     ''' 
-    '''     ''' &lt;param name="callbackSyntaxError"&gt;
-    '''     ''' An encapsulated method that is invoked if a syntax error is found in one of the arguments.
-    '''     ''' &lt;/param&gt;
-    '''     ''' 
-    '''     ''' &lt;param name="callbackMissingRequired"&gt;
-    '''     ''' An encapsulated method that is invoked if a required parameter is missing in the arguments.
-    '''     ''' &lt;/param&gt;
-    '''     ''' ----------------------------------------------------------------------------------------------------
-    '''     Private Sub ParseArguments(ByRef cmds As CommandlineParameter(),
-    '''                                ByVal callbackSyntaxError As Action(Of CommandlineParameter),
-    '''                                ByVal callbackMissingRequired As Action(Of CommandlineParameter))
-    ''' 
-    '''         ParseArguments(cmds, Environment.GetCommandLineArgs.Skip(1), callbackSyntaxError, callbackMissingRequired)
-    ''' 
-    '''     End Sub
-    ''' 
-    '''     ''' ----------------------------------------------------------------------------------------------------
-    '''     ''' &lt;summary&gt;
-    '''     ''' Loop through all the command-line arguments of this application.
-    '''     ''' &lt;/summary&gt;
-    '''     ''' ----------------------------------------------------------------------------------------------------
-    '''     ''' &lt;param name="cmds"&gt;
-    '''     ''' The commandline parameters.
-    '''     ''' &lt;/param&gt;
-    '''     ''' 
-    '''     ''' &lt;param name="args"&gt;
-    '''     ''' The collection of commandline arguments to examine.
-    '''     ''' &lt;/param&gt;
-    '''     ''' 
-    '''     ''' &lt;param name="callbackSyntaxError"&gt;
-    '''     ''' An encapsulated method that is invoked if a syntax error is found in one of the arguments.
-    '''     ''' &lt;/param&gt;
-    '''     ''' 
-    '''     ''' &lt;param name="callbackMissingRequired"&gt;
-    '''     ''' An encapsulated method that is invoked if a required parameter is missing in the arguments.
-    '''     ''' &lt;/param&gt;
-    '''     ''' ----------------------------------------------------------------------------------------------------
-    '''     Private Sub ParseArguments(ByRef cmds As CommandlineParameter(),
-    '''                                ByVal args As IEnumerable(Of String),
-    '''                                ByVal callbackSyntaxError As Action(Of CommandlineParameter),
-    '''                                ByVal callbackMissingRequired As Action(Of CommandlineParameter))
-    ''' 
-    '''         Dim cmdRequired As List(Of CommandlineParameter) =
-    '''             (From cmd As CommandlineParameter In cmds
-    '''              Where Not cmd.IsOptional).ToList
-    ''' 
-    '''         For Each arg As String In args
-    ''' 
-    '''             For Each cmd As CommandlineParameter In cmds
-    ''' 
-    '''                 If arg.StartsWith(cmd.Name, StringComparison.OrdinalIgnoreCase) Then
-    ''' 
-    '''                     If Not arg.Contains(cmd.Separator) Then
-    '''                         callbackSyntaxError.Invoke(cmd)
-    '''                         Exit Sub
-    ''' 
-    '''                     Else
-    '''                         Dim value As String = arg.Substring(arg.IndexOf(cmd.Separator) + 1)
-    ''' 
-    '''                         If (cmdRequired.Contains(cmd)) Then
-    '''                             cmdRequired.Remove(cmd)
-    '''                         End If
-    ''' 
-    '''                         If String.IsNullOrEmpty(value) Then
-    '''                             cmd.Value = cmd.DefaultValue
-    '''                             Continue For
-    ''' 
-    '''                         Else
-    '''                             Try
-    '''                                 cmd.Value = Convert.ChangeType(value, cmd.DefaultValue.GetType())
-    '''                                 Continue For
-    ''' 
-    '''                             Catch ex As Exception
-    '''                                 callbackSyntaxError.Invoke(cmd)
-    '''                                 Exit Sub
-    ''' 
-    '''                             End Try
-    ''' 
-    '''                         End If
-    ''' 
-    '''                     End If
-    ''' 
-    '''                 End If
-    ''' 
-    '''             Next cmd
-    ''' 
-    '''         Next arg
-    ''' 
-    '''         If (cmdRequired.Any) Then
-    '''             callbackMissingRequired.Invoke(cmdRequired.First)
-    '''         End If
-    ''' 
-    '''     End Sub
-    ''' 
-    '''     Private Sub Cmd_OnSyntaxError(ByVal cmd As CommandlineParameter)
-    ''' 
-    '''         Console.WriteLine(String.Format("[X] Syntax error in parameter: {0}", cmd.Name))
-    '''         Environment.Exit(exitCode:=1)
-    ''' 
-    '''     End Sub
-    ''' 
-    '''     Private Sub Cmd_OnMissingParameterRequired(ByVal cmd As CommandlineParameter)
-    ''' 
-    '''         Console.WriteLine(String.Format("[X] Parameter required: {0}", cmd.Name))
-    '''         Environment.Exit(exitCode:=1)
-    ''' 
-    '''     End Sub
-    ''' 
-    ''' End Module
+    ''' ' See the "Logic.Parsers" module for the argument parser implementation.
+    ''' Parsers.ParseArguments(cmds,
+    '''                        AddressOf ErrorCallbacks.OnSyntaxError,
+    '''                        AddressOf ErrorCallbacks.OnMissingParameterRequired,
+    '''                        AddressOf ErrorCallbacks.OnDuplicatedParameter,
+    '''                        AddressOf ErrorCallbacks.OnUnknownArgument)
     ''' </code>
     ''' </example>
     ''' ----------------------------------------------------------------------------------------------------

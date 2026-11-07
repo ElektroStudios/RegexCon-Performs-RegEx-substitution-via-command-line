@@ -1,6 +1,6 @@
 ﻿' ***********************************************************************
 ' Author   : Elektro
-' Modified : 26-February-2016
+' Modified : 07-November-2026
 ' ***********************************************************************
 
 #Region " Public Members Summary "
@@ -121,6 +121,10 @@ Namespace Types
         ''' The parameter to add.
         ''' </param>
         ''' ----------------------------------------------------------------------------------------------------
+        ''' <exception cref="ArgumentNullException">
+        ''' param
+        ''' </exception>
+        '''
         ''' <exception cref="ArgumentException">
         ''' Parameter already exists.;param
         ''' </exception>
@@ -128,7 +132,12 @@ Namespace Types
         <DebuggerStepThrough>
         Public Shadows Sub Add(ByRef param As CommandlineParameter)
 
-            If Me.Contains(param.Name) OrElse Me.Contains(param.ShortName) Then
+            If param Is Nothing Then
+                Throw New ArgumentNullException(paramName:=NameOf(param))
+            End If
+
+            If Me.Contains(param.Name) OrElse
+               (Not String.IsNullOrEmpty(param.ShortName) AndAlso Me.Contains(param.ShortName)) Then
                 Throw New ArgumentException(message:="Parameter already exists.", paramName:="param")
 
             Else
@@ -153,6 +162,10 @@ Namespace Types
         ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shadows Sub AddRange(ByRef params As CommandlineParameter())
+
+            If params Is Nothing Then
+                Throw New ArgumentNullException(paramName:=NameOf(params))
+            End If
 
             For Each param As CommandlineParameter In params
                 Me.Add(param)
@@ -235,8 +248,7 @@ Namespace Types
         Public Overloads Function Contains(ByVal name As String) As Boolean
 
             Return (From param As CommandlineParameter In MyBase.Items
-                    Where param.Name.Equals(name, StringComparison.OrdinalIgnoreCase) OrElse
-                          param.ShortName.Equals(name, StringComparison.OrdinalIgnoreCase)).Any
+                    Where CommandlineParameterCollection.IsMatch(param, name)).Any
 
         End Function
 
@@ -258,8 +270,7 @@ Namespace Types
         Public Overloads Function Find(ByVal name As String) As CommandlineParameter
 
             Return (From param As CommandlineParameter In MyBase.Items
-                    Where param.Name.Equals(name, StringComparison.OrdinalIgnoreCase) OrElse
-                          param.ShortName.Equals(name, StringComparison.OrdinalIgnoreCase)).
+                    Where CommandlineParameterCollection.IsMatch(param, name)).
                     DefaultIfEmpty(Nothing).
                     SingleOrDefault
 
@@ -288,8 +299,7 @@ Namespace Types
 
             For Each param As CommandlineParameter In MyBase.Items
 
-                If param.Name.Equals(name, StringComparison.OrdinalIgnoreCase) OrElse
-                   param.ShortName.Equals(name, StringComparison.OrdinalIgnoreCase) Then
+                If CommandlineParameterCollection.IsMatch(param, name) Then
                     found = True
                     Exit For
                 End If
@@ -305,6 +315,39 @@ Namespace Types
                 Return -1
 
             End If
+
+        End Function
+
+#End Region
+
+#Region " Private Methods "
+
+        ''' ----------------------------------------------------------------------------------------------------
+        ''' <summary>
+        ''' Determines whether the specified <see cref="CommandlineParameter"/> matches the specified key name, 
+        ''' comparing it against both the parameter name and its short name (case-insensitive).
+        ''' <para></para>
+        ''' A parameter with an empty or <see langword="Nothing"/> short name only matches by its name.
+        ''' </summary>
+        ''' ----------------------------------------------------------------------------------------------------
+        ''' <param name="param">
+        ''' The parameter to evaluate.
+        ''' </param>
+        '''
+        ''' <param name="name">
+        ''' The key name to compare.
+        ''' </param>
+        ''' ----------------------------------------------------------------------------------------------------
+        ''' <returns>
+        ''' <see langword="True"/> if the parameter matches the specified key name; otherwise, <see langword="False"/>.
+        ''' </returns>
+        ''' ----------------------------------------------------------------------------------------------------
+        <DebuggerStepThrough>
+        Private Shared Function IsMatch(ByVal param As CommandlineParameter, ByVal name As String) As Boolean
+
+            Return String.Equals(param.Name, name, StringComparison.OrdinalIgnoreCase) OrElse
+                   (Not String.IsNullOrEmpty(param.ShortName) AndAlso
+                    String.Equals(param.ShortName, name, StringComparison.OrdinalIgnoreCase))
 
         End Function
 

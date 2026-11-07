@@ -1,6 +1,6 @@
 ﻿' ***********************************************************************
 ' Author   : ElektroStudios
-' Modified : 26-February-2016
+' Modified : 07-November-2026
 ' Usage    : Use *F##* as the ForeColor beginning delimiter, use *-F* to restore the console forecolor.
 '            Use *B##* as the BackColor beginning delimiter, use *-B* to restore the console BackColor.
 ' ***********************************************************************
@@ -100,10 +100,10 @@ Namespace UserInterface
                 <Author>*f7*ElektroStudios*-F*</Author>
 
                 <!-- Application version -->
-                <Version>*F7*1.1*-F*</Version>
+                <Version>*F7*1.2*-F*</Version>
 
                 <!-- Copyright information -->
-                <Copyright>*F7*Copyright © ElektroStudios 2016-2024*-F*</Copyright>
+                <Copyright>*F7*Copyright © ElektroStudios 2016-2026*-F*</Copyright>
 
                 <!-- Website information -->
                 <Website>*F7*https://github.com/ElektroStudios/RegexCon-Performs-RegEx-substitution-via-command-line*-F*</Website>
@@ -156,15 +156,20 @@ Namespace UserInterface
 *F10*/Input        *F7*or *F10*/I*-F* *F3*| *F7*The input string.*-F*
 *F10*/Expression   *F7*or *F10*/E*-F* *F3*| *F7*The regular expression.*-F*
 *F10*/Substitution *F7*or *F10*/S*-F* *F3*| *F7*The substitution string.*-F*
-*F10*/MatchCase    *F7*or *F10*/M*-F* *F3*| *F7*Matches characters in a case-sensitive manner.*-F*
+*F10*/MatchCase    *F7*or *F10*/M*-F* *F3*| *F7*Matches characters in a case-sensitive manner (default: True).*-F*
 *F10*/?                *F3*  | *F7*Shows this help.*-F*
 
 *F11*[+]*-F* *F7*Switch value types*-F*
 *F11*---------------------------------------------------------*-F*
 *F10*/Input        *F7*or *F10*/I*-F* *F3*| *F7*Any string*-F*
-*F10*/Expression   *F7*or *F10*/E*-F* *F3*| *F7*Any string*-F*
+*F10*/Expression   *F7*or *F10*/E*-F* *F3*| *F7*Any non-empty regular expression*-F*
 *F10*/Substitution *F7*or *F10*/S*-F* *F3*| *F7*Any string*-F*
 *F10*/MatchCase    *F7*or *F10*/M*-F* *F3*| *F7*True*F3*/*F7*False*-F*
+
+*F11*[+]*-F* *F7*Exit codes*-F*
+*F11*---------------------------------------------------------*-F*
+*F10*0 *F3*| *F7*Success. The result is written to the standard output.*-F*
+*F10*1 *F3*| *F7*Error. The error message is written to the standard error.*-F*
 </SyntaxExtra>
 
                 <!-- Application Usage Examples -->
@@ -190,11 +195,11 @@ Namespace UserInterface
             With sb
                 .AppendLine(HelpSection.Help.<Logo>.Value)
                 .AppendLine(HelpSection.Help.<Separator>.Value)
-                .AppendLine(String.Format("*F7*Name......: {0}", HelpSection.Help.<Name>.Value))
-                .AppendLine(String.Format("*F7*Version...: {0}", HelpSection.Help.<Version>.Value))
-                .AppendLine(String.Format("*F7*Author....: {0}", HelpSection.Help.<Author>.Value))
-                .AppendLine(String.Format("*F7*Copyright.: {0}", HelpSection.Help.<Copyright>.Value))
-                .AppendLine(String.Format("*F7*Website...: {0}", HelpSection.Help.<Website>.Value))
+                .AppendLine($"*F7*Name......: {HelpSection.Help.<Name>.Value}")
+                .AppendLine($"*F7*Version...: {HelpSection.Help.<Version>.Value}")
+                .AppendLine($"*F7*Author....: {HelpSection.Help.<Author>.Value}")
+                .AppendLine($"*F7*Copyright.: {HelpSection.Help.<Copyright>.Value}")
+                .AppendLine($"*F7*Website...: {HelpSection.Help.<Website>.Value}")
                 .AppendLine(HelpSection.Help.<Separator>.Value)
                 .AppendLine(HelpSection.Help.<Syntax>.Value)
                 .AppendLine(HelpSection.Help.<SyntaxExtra>.Value)
