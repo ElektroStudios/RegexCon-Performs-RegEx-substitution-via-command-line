@@ -37,20 +37,16 @@ Imports System.Linq
 
 Namespace Tools
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Contains Console User-Interface related utilities.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Public NotInheritable Class CliUtil
 
 #Region " Constructors "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Prevents a default instance of the <see cref="CliUtil"/> class from being created.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerNonUserCode>
         Private Sub New()
         End Sub
@@ -59,22 +55,18 @@ Namespace Tools
 
 #Region " Hidden Base Members "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Determines whether the specified <see cref="System.Object"/> instances are considered equal.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <EditorBrowsable(EditorBrowsableState.Never)>
         <DebuggerNonUserCode>
         Public Shadows Function Equals(ByVal obj As Object) As Boolean
             Return MyBase.Equals(obj)
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Determines whether the specified <see cref="System.Object"/> instances are the same instance.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <EditorBrowsable(EditorBrowsableState.Never)>
         <DebuggerNonUserCode>
         Public Shadows Function ReferenceEquals(ByVal objA As Object, ByVal objB As Object) As Boolean
@@ -85,7 +77,6 @@ Namespace Tools
 
 #Region " Public Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Writes colored text on the Console.
         ''' <para></para>
@@ -93,13 +84,11 @@ Namespace Tools
         ''' <para></para>
         ''' Use <c>*B##*</c> as the start delimiter of the BackColor, use <c>*-B*</c> as the end delimiter of the BackColor.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <example> This is a code example.
         ''' <code>
         ''' WriteColorText("*F10*Hello *F14*World!*-F*", {"*"c})
         ''' </code>
         ''' </example>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="text">
         ''' The color-delimited text to write.
         ''' </param>
@@ -107,7 +96,6 @@ Namespace Tools
         ''' <param name="delimiters">
         ''' A set of 1 or 2 delimiters to parse the color-delimited string.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shared Sub WriteColorText(ByVal text As String,
                                          ByVal delimiters As Char())
@@ -165,18 +153,15 @@ Namespace Tools
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Writes colored text on the Console.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <example> This is a code example.
         ''' <code>
         ''' WriteColorText(" Hello World! ", ConsoleColor.Blue, ConsoleColor.Blue)
         ''' WriteColorText(" Hello World! ", ConsoleColor.Blue, Nothing)
         ''' </code>
         ''' </example>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="text">
         ''' The text to write.
         ''' </param>
@@ -188,7 +173,6 @@ Namespace Tools
         ''' <param name="backColor">
         ''' The background color, or <see langword="Nothing"/> to keep the current background color.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shared Sub WriteColorText(ByVal text As String,
                                          ByVal foreColor As ConsoleColor?,
@@ -215,7 +199,6 @@ Namespace Tools
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Writes colored text on the Console and adds an empty line at the end.
         ''' <para></para>
@@ -223,14 +206,12 @@ Namespace Tools
         ''' <para></para>
         ''' Use <c>*B##*</c> as the start delimiter of the BackColor, use <c>*-B*</c> as the end delimiter of the BackColor.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <example> This is a code example.
         ''' <code>
         ''' WriteColorTextLine("{B15}{F12} Hello World! {-F}{-B}", {"{"c, "}"c})
         ''' WriteColorTextLine($"*B15**F12* {"Hello"} *F0*{"World!"} *-F**-B*", {"*"c})
         ''' </code>
         ''' </example>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="text">
         ''' The color-delimited text to write.
         ''' </param>
@@ -238,7 +219,6 @@ Namespace Tools
         ''' <param name="delimiters">
         ''' A set of 1 or 2 delimiters to parse the color-delimited string.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shared Sub WriteColorTextLine(ByVal text As String,
                                              ByVal delimiters As Char())
@@ -251,18 +231,15 @@ Namespace Tools
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Writes colored text on the Console and adds an empty line at the end.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <example> This is a code example.
         ''' <code>
         ''' WriteColorTextLine(" Hello World! ", ConsoleColor.Magenta, ConsoleColor.Gray)
         ''' WriteColorTextLine(" Hello World! ", ConsoleColor.Magenta, Nothing)
         ''' </code>
         ''' </example>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="text">
         ''' The text to write.
         ''' </param>
@@ -274,7 +251,6 @@ Namespace Tools
         ''' <param name="backColor">
         ''' The background color, or <see langword="Nothing"/> to keep the current background color.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shared Sub WriteColorTextLine(ByVal text As String,
                                              ByVal foreColor As ConsoleColor?,

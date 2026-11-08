@@ -30,16 +30,13 @@ Imports RegexCon.Types
 
 #Region " Test Helpers "
 
-''' ----------------------------------------------------------------------------------------------------
 ''' <summary>
 ''' Provides shared helper methods for the unit tests.
 ''' </summary>
-''' ----------------------------------------------------------------------------------------------------
 Friend Module TestHelpers
 
 #Region " Parameter Helpers "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Creates a new <see cref="CommandlineParameterCollection"/> that contains the same parameters
     ''' registered by the application entry point (<c>UserInterface.Main</c>).
@@ -47,11 +44,9 @@ Friend Module TestHelpers
     ''' Every call returns new <see cref="CommandlineParameter"/> instances,
     ''' so the tests do not share parameter state between them.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <returns>
     ''' The resulting <see cref="CommandlineParameterCollection"/>.
     ''' </returns>
-    ''' ----------------------------------------------------------------------------------------------------
     Friend Function CreateApplicationParameters() As CommandlineParameterCollection
 
         Dim params As New CommandlineParameterCollection()
@@ -63,11 +58,9 @@ Friend Module TestHelpers
 
     End Function
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Creates a new <see cref="CommandlineParameter"/> with the specified values.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <param name="name">
     ''' The parameter name.
     ''' </param>
@@ -83,11 +76,9 @@ Friend Module TestHelpers
     ''' <param name="isOptional">
     ''' A value indicating whether the parameter is optional.
     ''' </param>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <returns>
     ''' The resulting <see cref="CommandlineParameter"/>.
     ''' </returns>
-    ''' ----------------------------------------------------------------------------------------------------
     Friend Function CreateParameter(ByVal name As String,
                                     ByVal shortName As String,
                                     ByVal defaultValue As Object,
@@ -107,20 +98,16 @@ Friend Module TestHelpers
 
 #Region " Console Helpers "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Invokes the specified method while the standard output is redirected,
     ''' and returns everything that was written to the console.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <param name="action">
     ''' The method to invoke.
     ''' </param>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <returns>
     ''' The text written to the console.
     ''' </returns>
-    ''' ----------------------------------------------------------------------------------------------------
     Friend Function CaptureConsoleOutput(ByVal action As Action) As String
 
         If action Is Nothing Then
@@ -144,35 +131,28 @@ Friend Module TestHelpers
 
 #Region " Process Helpers "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Gets the full path of the RegexCon application assembly under test.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Friend ReadOnly Property ApplicationPath As String
         Get
             Return GetType(RegExUtil).Assembly.Location
         End Get
     End Property
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Runs the RegexCon application with the specified command-line arguments,
     ''' and waits for it to exit.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <param name="args">
     ''' The command-line arguments. Each argument is quoted automatically.
     ''' </param>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <returns>
     ''' A <see cref="ProcessResult"/> with the exit code and the standard output of the process.
     ''' </returns>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <exception cref="TimeoutException">
     ''' The process did not exit in the expected time.
     ''' </exception>
-    ''' ----------------------------------------------------------------------------------------------------
     Friend Function RunApplication(ParamArray args As String()) As ProcessResult
 
         Dim appPath As String = TestHelpers.ApplicationPath
@@ -208,20 +188,16 @@ Friend Module TestHelpers
 
     End Function
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Quotes the specified command-line argument following the Windows command-line parsing rules
     ''' (the same rules used by <c>CommandLineToArgvW</c> and the .NET runtime).
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <param name="arg">
     ''' The argument to quote.
     ''' </param>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <returns>
     ''' The quoted argument.
     ''' </returns>
-    ''' ----------------------------------------------------------------------------------------------------
     Friend Function QuoteArgument(ByVal arg As String) As String
 
         If arg Is Nothing Then
@@ -266,39 +242,29 @@ End Module
 
 #Region " Process Result "
 
-''' ----------------------------------------------------------------------------------------------------
 ''' <summary>
 ''' Represents the result of running the RegexCon application in a child process.
 ''' </summary>
-''' ----------------------------------------------------------------------------------------------------
 Friend NotInheritable Class ProcessResult
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Gets the process exit code.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Friend ReadOnly Property ExitCode As Integer
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Gets the text written by the process to the standard output.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Friend ReadOnly Property StandardOutput As String
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Gets the text written by the process to the standard error.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Friend ReadOnly Property StandardError As String
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Gets the standard output without the trailing line break written by <see cref="Console.WriteLine(String)"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Friend ReadOnly Property OutputLine As String
         Get
             Dim output As String = Me.StandardOutput
@@ -312,11 +278,9 @@ Friend NotInheritable Class ProcessResult
         End Get
     End Property
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Initializes a new instance of the <see cref="ProcessResult"/> class.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <param name="exitCode">
     ''' The process exit code.
     ''' </param>
@@ -328,7 +292,6 @@ Friend NotInheritable Class ProcessResult
     ''' <param name="standardError">
     ''' The text written by the process to the standard error.
     ''' </param>
-    ''' ----------------------------------------------------------------------------------------------------
     Friend Sub New(ByVal exitCode As Integer, ByVal standardOutput As String, ByVal standardError As String)
 
         If standardOutput Is Nothing Then
@@ -345,15 +308,12 @@ Friend NotInheritable Class ProcessResult
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Returns a string that describes this process result, useful in assertion messages.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <returns>
     ''' A string that describes this process result.
     ''' </returns>
-    ''' ----------------------------------------------------------------------------------------------------
     Public Overrides Function ToString() As String
         Return $"ExitCode={Me.ExitCode}; StdOut=""{Me.StandardOutput}""; StdErr=""{Me.StandardError}"""
     End Function

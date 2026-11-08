@@ -81,11 +81,9 @@ Namespace Types
 
 #Region " Commandline Parameter "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Represents a Commandline Parameter.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <example> This is a code example.
     ''' <code>
     ''' Dim cmd1 As New CommandlineParameter(Of String) With {
@@ -107,17 +105,14 @@ Namespace Types
     '''                        AddressOf ErrorCallbacks.OnUnknownArgument)
     ''' </code>
     ''' </example>
-    ''' ----------------------------------------------------------------------------------------------------
     <ImmutableObject(False)>
     Public NotInheritable Class CommandlineParameter : Inherits CommandlineParameter(Of Object)
 
 #Region " Constructors "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Initializes a new instance of the <see cref="CommandlineParameter"/> class.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Sub New()
         End Sub
@@ -126,43 +121,34 @@ Namespace Types
 
 #Region " Hidden Base Members "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Determines whether the specified <see cref="Object"/> is equal to this instance.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="obj">
         ''' Another object to compare to.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' <see langword="True"/> if the specified <see cref="Object"/> is equal to this instance; otherwise, <see langword="False"/>.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <EditorBrowsable(EditorBrowsableState.Never)>
         <DebuggerNonUserCode>
         Public Shadows Function Equals(ByVal obj As Object) As Boolean
             Return MyBase.Equals(obj)
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Determines whether the specified <see cref="Global.System.Object"/> instances are the same instance.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="objA">
         ''' The first object to compare.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="objB">
         ''' The second object to compare.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' <see langword="True"/> if <paramref name="objA"/> is the same instance as <paramref name="objB"/> 
         ''' or if both are <see langword="Nothing"/>; otherwise, <see langword="False"/>.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <EditorBrowsable(EditorBrowsableState.Never)>
         <DebuggerNonUserCode>
         Public Shadows Function ReferenceEquals(ByVal objA As Object, ByVal objB As Object) As Boolean

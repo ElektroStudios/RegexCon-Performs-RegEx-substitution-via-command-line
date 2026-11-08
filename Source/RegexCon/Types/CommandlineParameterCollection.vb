@@ -60,11 +60,9 @@ Imports System.Xml.Serialization
 
 Namespace Types
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Represents a strongly typed list of <see cref="CommandlineParameter"/> that can be accessed by an index.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <Serializable>
     <XmlRoot("Items")>
     <ImmutableObject(True)>
@@ -72,11 +70,9 @@ Namespace Types
 
 #Region " Constructors "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Initializes a new instance of the <see cref="CommandlineParameterCollection"/> class.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Public Sub New()
         End Sub
 
@@ -84,19 +80,15 @@ Namespace Types
 
 #Region " Indexers "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets or sets the <see cref="CommandlineParameter"/> that matches the specified key name.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="paramName">
         ''' The parameter name.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <value>
         ''' The <see cref="CommandLineParameter"/>.
         ''' </value>
-        ''' ----------------------------------------------------------------------------------------------------
         Default Public Overloads Property Item(ByVal paramName As String) As CommandlineParameter
             <DebuggerStepThrough>
             Get
@@ -112,15 +104,12 @@ Namespace Types
 
 #Region " Public Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Adds a <see cref="CommandlineParameter"/> to the end of the <see cref="CommandlineParameterCollection"/>.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="param">
         ''' The parameter to add.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentNullException">
         ''' param
         ''' </exception>
@@ -128,7 +117,6 @@ Namespace Types
         ''' <exception cref="ArgumentException">
         ''' Parameter already exists.;param
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shadows Sub Add(ByRef param As CommandlineParameter)
 
@@ -147,19 +135,15 @@ Namespace Types
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Adds the specified parameters to the end of the <see cref="CommandlineParameterCollection"/>.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="params">
         ''' The parameters to add.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentException">
         ''' Parameter already exists.;param
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shadows Sub AddRange(ByRef params As CommandlineParameter())
 
@@ -173,19 +157,15 @@ Namespace Types
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Removes a <see cref="CommandlineParameter"/> from the <see cref="CommandlineParameterCollection"/>.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="param">
         ''' The parameter.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentException">
         ''' Parameter doesn't exists.;name
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shadows Sub Remove(ByVal param As CommandlineParameter)
 
@@ -201,19 +181,15 @@ Namespace Types
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Removes a <see cref="CommandlineParameter"/> from the <see cref="CommandlineParameterCollection"/>.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="name">
         ''' The name of the parameter.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentException">
         ''' Parameter doesn't exists.;name
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shadows Sub Remove(ByVal name As String)
 
@@ -229,21 +205,17 @@ Namespace Types
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Determines whether the <see cref="CommandlineParameterCollection"/> contains a <see cref="CommandlineParameter"/> that 
         ''' matches the specified key name.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="name">
         ''' The name of the parameter.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' <see langword="True"/> if the <see cref="CommandlineParameterCollection"/> contains the <see cref="CommandlineParameter"/>, 
         ''' <see langword="False"/> otherwise.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Overloads Function Contains(ByVal name As String) As Boolean
 
@@ -252,20 +224,16 @@ Namespace Types
 
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Searches for an <see cref="CommandlineParameter"/> that matches the specified parameter name, 
         ''' and returns the first occurrence within the entire <see cref="CommandlineParameterCollection"/>.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="name">
         ''' The name of the parameter.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' <see cref="CommandlineParameter"/>.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Overloads Function Find(ByVal name As String) As CommandlineParameter
 
@@ -276,21 +244,17 @@ Namespace Types
 
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Searches for an <see cref="CommandlineParameter"/> that matches the specified key name and 
         ''' returns the zero-based index of the first occurrence within the entire <see cref="CommandlineParameterCollection"/>.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="name">
         ''' The name of the parameter.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' The zero-based index of the first occurrence of <see cref="CommandlineParameter"/> within the entire <see cref="CommandlineParameterCollection"/>, if found; 
         ''' otherwise, <c>–1</c>.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Overloads Function IndexOf(ByVal name As String) As Integer
 
@@ -322,14 +286,12 @@ Namespace Types
 
 #Region " Private Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Determines whether the specified <see cref="CommandlineParameter"/> matches the specified key name, 
         ''' comparing it against both the parameter name and its short name (case-insensitive).
         ''' <para></para>
         ''' A parameter with an empty or <see langword="Nothing"/> short name only matches by its name.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="param">
         ''' The parameter to evaluate.
         ''' </param>
@@ -337,11 +299,9 @@ Namespace Types
         ''' <param name="name">
         ''' The key name to compare.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' <see langword="True"/> if the parameter matches the specified key name; otherwise, <see langword="False"/>.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Private Shared Function IsMatch(ByVal param As CommandlineParameter, ByVal name As String) As Boolean
 
@@ -355,88 +315,70 @@ Namespace Types
 
 #Region " Hidden Base Members "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Serves as a hash function for a particular type.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <EditorBrowsable(EditorBrowsableState.Never)>
         <DebuggerNonUserCode>
         Public Shadows Function GetHashCode() As Integer
             Return MyBase.GetHashCode
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the <see cref="System.Type"/> of the current instance.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' The exact runtime type of the current instance.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <EditorBrowsable(EditorBrowsableState.Never)>
         <DebuggerNonUserCode>
         Public Shadows Function [GetType]() As Type
             Return MyBase.GetType
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Returns a String that represents the current object.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' A string that represents the current object.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <EditorBrowsable(EditorBrowsableState.Never)>
         <DebuggerNonUserCode>
         Public Shadows Function ToString() As String
             Return MyBase.ToString
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Determines whether the specified <see cref="Object"/> is equal to this instance.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="obj">
         ''' Another object to compare to.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' <see langword="True"/> if the specified <see cref="Object"/> is equal to this instance; otherwise, <see langword="False"/>.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <EditorBrowsable(EditorBrowsableState.Never)>
         <DebuggerNonUserCode>
         Public Shadows Function Equals(ByVal obj As Object) As Boolean
             Return MyBase.Equals(obj)
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Determines whether the specified <see cref="System.Object"/> instances are the same instance.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="objA">
         ''' The first object to compare.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="objB">
         ''' The second object to compare.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' <see langword="True"/> if <paramref name="objA"/> is the same instance as <paramref name="objB"/> 
         ''' or if both are <see langword="Nothing"/>; otherwise, <see langword="False"/>.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <EditorBrowsable(EditorBrowsableState.Never)>
         <DebuggerNonUserCode>
         Public Shadows Function ReferenceEquals(ByVal objA As Object, ByVal objB As Object) As Boolean

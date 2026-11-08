@@ -81,11 +81,9 @@ Namespace Types
 
 #Region " Commandline Parameter (Of T) "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Represents a Commandline Parameter.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <example> This is a code example.
     ''' <code>
     ''' Dim cmd1 As New CommandlineParameter(Of String) With {
@@ -107,17 +105,14 @@ Namespace Types
     '''                        AddressOf ErrorCallbacks.OnUnknownArgument)
     ''' </code>
     ''' </example>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <typeparam name="T">
     ''' The type of value that the parameter takes.
     ''' </typeparam>
-    ''' ----------------------------------------------------------------------------------------------------
     <ImmutableObject(False)>
     Public Class CommandlineParameter(Of T)
 
 #Region " Properties "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets or sets a value indicating whether this parameter is required for the application.
         ''' <para></para>
@@ -125,22 +120,17 @@ Namespace Types
         ''' <para></para>
         ''' A value of <see langword="True"/> means this is an optional parameter so no matter if the user sets a custom value.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <value>
         ''' <see langword="False"/> if this parameter is required for the application; otherwise, <see langword="True"/>.
         ''' </value>
-        ''' ----------------------------------------------------------------------------------------------------
         Public Property IsOptional As Boolean
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets or sets the parameter name.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <value>
         ''' The parameter name.
         ''' </value>
-        ''' ----------------------------------------------------------------------------------------------------
         Public Property Name As String
             <DebuggerStepThrough>
             Get
@@ -151,23 +141,18 @@ Namespace Types
                 Me.EvaluateName(value)
             End Set
         End Property
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' ( Backing Field )
         ''' The parameter name.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Private nameB As String
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets or sets the parameter shortname.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <value>
         ''' The parameter shortname.
         ''' </value>
-        ''' ----------------------------------------------------------------------------------------------------
         Public Property ShortName As String
             <DebuggerStepThrough>
             Get
@@ -178,25 +163,20 @@ Namespace Types
                 Me.EvaluateShortName(value)
             End Set
         End Property
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' ( Backing Field )
         ''' The parameter shortname.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Private shortNameB As String
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets or sets the parameter separator.
         ''' <para></para>
         ''' This character separates the parameter from the value in the argument.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <value>
         ''' The parameter separator.
         ''' </value>
-        ''' ----------------------------------------------------------------------------------------------------
         Public Property Separator As Char
             <DebuggerStepThrough>
             Get
@@ -207,15 +187,12 @@ Namespace Types
                 Me.EvaluateSeparator(value)
             End Set
         End Property
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' ( Backing Field )
         ''' The parameter separator.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Private separatorB As Char
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets or sets the parameter value.
         ''' <para></para>
@@ -225,14 +202,11 @@ Namespace Types
         ''' <para></para>
         ''' To set a default value for this parameter, use <see cref="CommandlineParameter(Of T).DefaultValue"/> property instead.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <value>
         ''' The parameter value.
         ''' </value>
-        ''' ----------------------------------------------------------------------------------------------------
         Public Property Value As T
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets or sets the default parameter value.
         ''' <para></para>
@@ -240,30 +214,24 @@ Namespace Types
         ''' <see cref="CommandlineParameter(Of T).Value"/> is <see langword="Nothing"/>,
         ''' meaning that the end-user didn't assigned any custom value to this parameter.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <value>
         ''' The default parameter value.
         ''' </value>
-        ''' ----------------------------------------------------------------------------------------------------
         Public Property DefaultValue As T
 
 #End Region
 
 #Region " Operator Overloading "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Performs an implicit conversion from <see cref="CommandlineParameter(Of T)"/> to <see cref="CommandlineParameter"/>.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="cmd">
         ''' The <see cref="CommandlineParameter(Of T)"/> to convert.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' The result of the conversion.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shared Widening Operator CType(ByVal cmd As CommandlineParameter(Of T)) As CommandlineParameter
 
@@ -283,15 +251,12 @@ Namespace Types
 
 #Region " Private Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Evaluates an attempt to assign the parameter name.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="name">
         ''' The parameter name.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentNullException">
         ''' The parameter name cannot be null.;name
         ''' </exception>
@@ -303,7 +268,6 @@ Namespace Types
         ''' <exception cref="ArgumentException">
         ''' The parameter name cannot be equals than the parameter shortname.;name
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Protected Overridable Sub EvaluateName(ByVal name As String)
 
@@ -325,15 +289,12 @@ Namespace Types
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Evaluates an attempt to assign the parameter shortname.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="shortName">
         ''' The parameter shortname.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentException">
         ''' The parameter name cannot contain the separator character.;shortname
         ''' </exception>
@@ -341,7 +302,6 @@ Namespace Types
         ''' <exception cref="ArgumentException">
         ''' The parameter shortname cannot be equals than the parameter name.;shortname
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Protected Overridable Sub EvaluateShortName(ByVal shortname As String)
 
@@ -364,15 +324,12 @@ Namespace Types
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Evaluates an attempt to assign the parameter separator.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="separator">
         ''' The parameter separator.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentException">
         ''' The parameter separator cannot be any character contained in the parameter name.;separator
         ''' </exception>
@@ -380,7 +337,6 @@ Namespace Types
         ''' <exception cref="ArgumentException">
         ''' The parameter separator cannot be any character contained in the parameter shortname.;separator
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Protected Overridable Sub EvaluateSeparator(ByVal separator As Char)
 
@@ -403,11 +359,9 @@ Namespace Types
 
 #Region " Constructors "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Initializes a new instance of the <see cref="CommandlineParameter(Of T)"/> class.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Sub New()
         End Sub
@@ -416,43 +370,34 @@ Namespace Types
 
 #Region " Hidden Base Members "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Determines whether the specified <see cref="Object"/> is equal to this instance.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="obj">
         ''' Another object to compare to.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' <see langword="True"/> if the specified <see cref="Object"/> is equal to this instance; otherwise, <see langword="False"/>.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <EditorBrowsable(EditorBrowsableState.Never)>
         <DebuggerNonUserCode>
         Public Shadows Function Equals(ByVal obj As Object) As Boolean
             Return MyBase.Equals(obj)
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Determines whether the specified <see cref="Global.System.Object"/> instances are the same instance.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="objA">
         ''' The first object to compare.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="objB">
         ''' The second object to compare.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' <see langword="True"/> if <paramref name="objA"/> is the same instance as <paramref name="objB"/> 
         ''' or if both are <see langword="Nothing"/>; otherwise, <see langword="False"/>.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <EditorBrowsable(EditorBrowsableState.Never)>
         <DebuggerNonUserCode>
         Public Shadows Function ReferenceEquals(ByVal objA As Object, ByVal objB As Object) As Boolean

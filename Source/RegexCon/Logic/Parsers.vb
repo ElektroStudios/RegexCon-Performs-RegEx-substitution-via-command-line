@@ -24,32 +24,26 @@ Imports RegexCon.UserInterface
 
 Namespace Logic
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Provides the command-line argument parser of this application.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Friend Module Parsers
 
 #Region " Constants "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' The command-line switch that prints the help.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Friend Const HelpSwitch As String = "/?"
 
 #End Region
 
 #Region " Public Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Parses all the command-line arguments of this application,
         ''' then assigns the parsed values to the <see cref="Fields"/> module.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="cmds">
         ''' The commandline parameters.
         ''' </param>
@@ -69,7 +63,6 @@ Namespace Logic
         ''' <param name="callbackUnknownArgument">
         ''' An encapsulated method that is invoked if an argument does not match any parameter.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Friend Sub ParseArguments(ByVal cmds As CommandlineParameterCollection,
                                   ByVal callbackSyntaxError As Action(Of CommandlineParameter),
                                   ByVal callbackMissingRequired As Action(Of CommandlineParameter),
@@ -82,11 +75,9 @@ Namespace Logic
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Parses the specified command-line arguments.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="cmds">
         ''' The commandline parameters.
         ''' </param>
@@ -113,7 +104,6 @@ Namespace Logic
         ''' <param name="callbackUnknownArgument">
         ''' An encapsulated method that is invoked if an argument does not match any parameter.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <remarks>
         ''' If there are no arguments, or any argument is the help switch (<c>/?</c>),
         ''' the help is printed before parsing any other argument.
@@ -123,7 +113,6 @@ Namespace Logic
         ''' <para></para>
         ''' The parsing stops at the first error, after invoking the corresponding callback.
         ''' </remarks>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentNullException">
         ''' <paramref name="cmds"/>, <paramref name="args"/> or any of the callbacks is <see langword="Nothing"/>.
         ''' </exception>
@@ -135,7 +124,6 @@ Namespace Logic
         ''' <exception cref="InvalidOperationException">
         ''' A parameter has no default value, so its value type cannot be determined.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         Friend Sub ParseArguments(ByVal cmds As CommandlineParameterCollection,
                                   ByVal args As IEnumerable(Of String),
                                   ByVal callbackSyntaxError As Action(Of CommandlineParameter),
@@ -245,13 +233,11 @@ Namespace Logic
 
 #Region " Private Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Finds the parameter that matches the specified argument,
         ''' this is, an argument that starts with the parameter name or short name followed by the separator character
         ''' (case-insensitive).
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="cmds">
         ''' The commandline parameters.
         ''' </param>
@@ -259,12 +245,10 @@ Namespace Logic
         ''' <param name="arg">
         ''' The argument.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' The matching <see cref="CommandlineParameter"/>,
         ''' or <see langword="Nothing"/> if the argument does not match any parameter.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         Private Function FindParameterForArgument(ByVal cmds As CommandlineParameterCollection,
                                                   ByVal arg As String) As CommandlineParameter
 

@@ -25,31 +25,25 @@ Imports RegexCon.UserInterface
 
 #Region " HelpSection Tests "
 
-''' ----------------------------------------------------------------------------------------------------
 ''' <summary>
 ''' Unit tests for <see cref="HelpSection"/> type.
 ''' <para></para>
 ''' These tests keep the help text consistent with the assembly metadata and the parameter definitions.
 ''' </summary>
-''' ----------------------------------------------------------------------------------------------------
 <TestClass>
 Public NotInheritable Class HelpSectionTests
 
 #Region " Private Methods "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Gets the value of the specified help element, with the color tokens removed.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <param name="elementName">
     ''' The name of the help element.
     ''' </param>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <returns>
     ''' The plain text value of the help element.
     ''' </returns>
-    ''' ----------------------------------------------------------------------------------------------------
     Private Shared Function GetPlainHelpValue(ByVal elementName As String) As String
 
         Dim element As XElement = HelpSection.Help.Element(elementName)
@@ -65,15 +59,12 @@ Public NotInheritable Class HelpSectionTests
 
 #Region " Tests "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that all the elements used by the help printer exist and are not empty.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <param name="elementName">
     ''' The name of the help element.
     ''' </param>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     <DataRow("Title")>
     <DataRow("Name")>
@@ -95,11 +86,9 @@ Public NotInheritable Class HelpSectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the version shown in the help matches the assembly version (major.minor).
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Help_Version_MatchesAssemblyVersion()
 
@@ -110,11 +99,9 @@ Public NotInheritable Class HelpSectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the copyright shown in the help matches the assembly copyright.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Help_Copyright_MatchesAssemblyCopyright()
 
@@ -126,11 +113,9 @@ Public NotInheritable Class HelpSectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the switches section documents the name and short name of every parameter.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Help_SyntaxExtra_DocumentsAllParameters()
 
@@ -145,11 +130,9 @@ Public NotInheritable Class HelpSectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the syntax section documents the required parameters using their short name and separator.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Help_Syntax_DocumentsRequiredParameters()
 
@@ -163,11 +146,9 @@ Public NotInheritable Class HelpSectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the website shown in the help points to the project repository.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Help_Website_PointsToRepository()
 

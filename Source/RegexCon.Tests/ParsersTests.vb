@@ -25,7 +25,6 @@ Imports RegexCon.Types
 
 #Region " Parsers Tests "
 
-''' ----------------------------------------------------------------------------------------------------
 ''' <summary>
 ''' Unit tests for the command-line argument parser (<see cref="Parsers"/> module).
 ''' <para></para>
@@ -34,49 +33,38 @@ Imports RegexCon.Types
 ''' <para></para>
 ''' The parser is strict: unknown arguments, duplicated parameters and parameters without value are errors.
 ''' </summary>
-''' ----------------------------------------------------------------------------------------------------
 <TestClass>
 Public NotInheritable Class ParsersTests
 
 #Region " Private Fields "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' The parameters reported by the syntax error callback.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Private syntaxErrors As List(Of CommandlineParameter)
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' The parameters reported by the missing required parameter callback.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Private missingRequired As List(Of CommandlineParameter)
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' The parameters reported by the duplicated parameter callback.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Private duplicated As List(Of CommandlineParameter)
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' The arguments reported by the unknown argument callback.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Private unknownArgs As List(Of String)
 
 #End Region
 
 #Region " Test Initialization "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Resets the callback recorders before each test.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestInitialize>
     Public Sub TestInitialize()
 
@@ -91,11 +79,9 @@ Public NotInheritable Class ParsersTests
 
 #Region " Private Methods "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Parses the specified arguments using recording callbacks.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <param name="params">
     ''' The parameters to fill.
     ''' </param>
@@ -103,7 +89,6 @@ Public NotInheritable Class ParsersTests
     ''' <param name="args">
     ''' The command-line arguments.
     ''' </param>
-    ''' ----------------------------------------------------------------------------------------------------
     Private Sub Parse(ByVal params As CommandlineParameterCollection, ParamArray args As String())
 
         Parsers.ParseArguments(params, args,
@@ -114,11 +99,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Asserts that no callback was invoked.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Private Sub AssertNoErrors()
 
         Assert.IsEmpty(Me.syntaxErrors, "Unexpected syntax error callback.")
@@ -132,11 +115,9 @@ Public NotInheritable Class ParsersTests
 
 #Region " Valid Arguments "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the values are parsed using the long parameter names.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_LongNames_AssignsValues()
 
@@ -152,11 +133,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the values are parsed using the short parameter names.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_ShortNames_AssignsValues()
 
@@ -172,11 +151,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the parameter names are matched case-insensitive.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_MixedCaseNames_AssignsValues()
 
@@ -192,12 +169,10 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that only the first separator splits the name from the value,
     ''' so the value can contain the separator character.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_ValueContainsSeparator_KeepsWholeValue()
 
@@ -212,11 +187,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that an empty value assigns the default value of the parameter.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_EmptyValues_AssignsDefaultValues()
 
@@ -232,7 +205,6 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that an omitted optional parameter takes its default value.
     ''' <para></para>
@@ -240,7 +212,6 @@ Public NotInheritable Class ParsersTests
     ''' instead of its documented default value (<see langword="True"/>),
     ''' so the substitution was performed case-insensitive.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_OmittedMatchCase_TakesDefaultValueTrue()
 
@@ -253,11 +224,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the values are converted to the type of the default value.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_IntegerParameter_ConvertsValue()
 
@@ -272,11 +241,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a parameter without short name is matched by its name.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_ParameterWithoutShortName_MatchesByName()
 
@@ -290,12 +257,10 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the values are converted using the invariant culture, 
     ''' so the result does not depend on the regional settings of the user.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_DoubleParameter_UsesInvariantCulture()
 
@@ -319,18 +284,15 @@ Public NotInheritable Class ParsersTests
 
 #Region " Invalid Arguments "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that an argument that does not match any parameter invokes the unknown argument callback 
     ''' and stops the parsing.
     ''' <para></para>
     ''' Regression test: before v1.2 the unknown arguments were silently ignored.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <param name="unknownArg">
     ''' The unknown argument.
     ''' </param>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     <DataRow("/Unknown=1")>
     <DataRow("garbage")>
@@ -354,13 +316,11 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a parameter without short name does not match arguments that start with the separator.
     ''' <para></para>
     ''' Regression test: before v1.2, a parameter without short name matched any argument starting with "=".
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_ParameterWithoutShortName_DoesNotMatchBareSeparator()
 
@@ -375,14 +335,12 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a parameter specified more than once invokes the duplicated parameter callback 
     ''' and stops the parsing.
     ''' <para></para>
     ''' Regression test: before v1.2 the last occurrence silently overwrote the previous ones.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <param name="first">
     ''' The first occurrence of the parameter.
     ''' </param>
@@ -390,7 +348,6 @@ Public NotInheritable Class ParsersTests
     ''' <param name="second">
     ''' The second occurrence of the parameter.
     ''' </param>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     <DataRow("/I=first", "/I=second", DisplayName:="Short name twice")>
     <DataRow("/Input=first", "/input=second", DisplayName:="Name twice")>
@@ -411,12 +368,10 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a known parameter specified without separator and value (e.g. <c>/I</c>) 
     ''' invokes the syntax error callback for that parameter.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <param name="bareSwitch">
     ''' The parameter specified without separator.
     ''' </param>
@@ -424,7 +379,6 @@ Public NotInheritable Class ParsersTests
     ''' <param name="expectedName">
     ''' The expected name of the reported parameter.
     ''' </param>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     <DataRow("/I", "/Input")>
     <DataRow("/input", "/Input")>
@@ -442,11 +396,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a parameter without default value is rejected, because its value type cannot be determined.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_ParameterWithoutDefaultValue_ThrowsInvalidOperationException()
 
@@ -457,11 +409,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that an argument collection that contains <see langword="Nothing"/> is rejected.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_NullArgumentInCollection_ThrowsArgumentException()
 
@@ -474,11 +424,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a value that cannot be converted invokes the syntax error callback.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_InvalidBooleanValue_InvokesSyntaxErrorCallback()
 
@@ -492,11 +440,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the parsing stops at the first syntax error.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_SyntaxError_StopsParsing()
 
@@ -512,11 +458,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a missing required parameter invokes the callback with the first missing parameter.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_MissingRequired_InvokesCallbackWithFirstMissing()
 
@@ -530,11 +474,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that only the required parameters are reported as missing (the optional ones are not).
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_MissingSubstitution_ReportsSubstitution()
 
@@ -547,11 +489,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a required parameter given with an empty value is not reported as missing.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_RequiredWithEmptyValue_IsNotMissing()
 
@@ -563,11 +503,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that <see langword="Nothing"/> arguments are rejected.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParseArguments_NullArguments_ThrowsArgumentNullException()
 
@@ -602,11 +540,9 @@ Public NotInheritable Class ParsersTests
 
 #Region " Fields "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that <see cref="Fields.SetFields"/> copies the parsed values to the <see cref="Fields"/> module.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub SetFields_AfterParsing_CopiesParsedValues()
 
@@ -628,11 +564,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that <see cref="Fields.SetFields"/> gets <c>MatchCase = True</c> when <c>/MatchCase</c> is omitted.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub SetFields_OmittedMatchCase_IsTrue()
 
@@ -651,11 +585,9 @@ Public NotInheritable Class ParsersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the regular expression validation is enabled by default.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Validate_IsEnabled()
 

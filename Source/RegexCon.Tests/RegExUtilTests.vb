@@ -21,25 +21,20 @@ Imports RegexCon.Tools
 
 #Region " RegExUtil Tests "
 
-''' ----------------------------------------------------------------------------------------------------
 ''' <summary>
 ''' Unit tests for <see cref="RegExUtil"/> type.
 ''' </summary>
-''' ----------------------------------------------------------------------------------------------------
 <TestClass>
 Public NotInheritable Class RegExUtilTests
 
 #Region " ValidateExpression "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that valid regular expressions pass the validation.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <param name="expression">
     ''' The regular expression.
     ''' </param>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     <DataRow("")>
     <DataRow("abc")>
@@ -53,15 +48,12 @@ Public NotInheritable Class RegExUtilTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that invalid regular expressions fail the validation.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <param name="expression">
     ''' The regular expression.
     ''' </param>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     <DataRow("[0-9]++")>
     <DataRow("(abc")>
@@ -76,11 +68,9 @@ Public NotInheritable Class RegExUtilTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a <see langword="Nothing"/> expression fails the validation.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ValidateExpression_Nothing_ReturnsFalse()
 

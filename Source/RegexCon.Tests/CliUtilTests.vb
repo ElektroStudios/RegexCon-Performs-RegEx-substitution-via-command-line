@@ -22,21 +22,17 @@ Imports RegexCon.UserInterface
 
 #Region " CliUtil Tests "
 
-''' ----------------------------------------------------------------------------------------------------
 ''' <summary>
 ''' Unit tests for <see cref="CliUtil"/> type.
 ''' </summary>
-''' ----------------------------------------------------------------------------------------------------
 <TestClass>
 Public NotInheritable Class CliUtilTests
 
 #Region " WriteColorText (Delimiters) "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the color tokens are not printed and the remaining text is printed in order.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub WriteColorText_ColorTokens_AreNotPrinted()
 
@@ -47,11 +43,9 @@ Public NotInheritable Class CliUtilTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the text without color tokens is printed as is.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub WriteColorText_PlainText_IsPrintedAsIs()
 
@@ -62,11 +56,9 @@ Public NotInheritable Class CliUtilTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the console colors are restored after writing.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub WriteColorText_AfterWriting_RestoresConsoleColors()
 
@@ -80,11 +72,9 @@ Public NotInheritable Class CliUtilTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that <see cref="CliUtil.WriteColorTextLine(String, Char())"/> appends a line break.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub WriteColorTextLine_Delimiters_AppendsNewLine()
 
@@ -95,11 +85,9 @@ Public NotInheritable Class CliUtilTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the whole help text is printed without any color token.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub WriteColorText_HelpSyntaxExtra_PrintsWithoutTokens()
 
@@ -117,11 +105,9 @@ Public NotInheritable Class CliUtilTests
 
 #Region " WriteColorText (Colors) "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that <see cref="CliUtil.WriteColorText(String, Nullable(Of ConsoleColor), Nullable(Of ConsoleColor))"/> prints the text.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub WriteColorText_Colors_PrintsText()
 
@@ -132,12 +118,10 @@ Public NotInheritable Class CliUtilTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that <see cref="CliUtil.WriteColorTextLine(String, Nullable(Of ConsoleColor), Nullable(Of ConsoleColor))"/> appends a line break
     ''' and restores the console colors.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub WriteColorTextLine_Colors_AppendsNewLineAndRestoresColors()
 
@@ -153,11 +137,9 @@ Public NotInheritable Class CliUtilTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that <see langword="Nothing"/> colors keep the current console colors.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub WriteColorText_NothingColors_PrintsTextAndKeepsColors()
 
@@ -173,14 +155,12 @@ Public NotInheritable Class CliUtilTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that <see cref="ConsoleColor.Black"/> is accepted as a color.
     ''' <para></para>
     ''' Regression test: before v1.2, <see cref="ConsoleColor.Black"/> (value 0) was compared as <see langword="Nothing"/>, 
     ''' so it was treated as "keep the current color" and it was impossible to use black.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub WriteColorText_BlackColor_IsAccepted()
 
@@ -195,11 +175,9 @@ Public NotInheritable Class CliUtilTests
 
 #Region " Argument Validation "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that <see langword="Nothing"/> text is rejected by all the overloads.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub WriteColorText_NullText_ThrowsArgumentNullException()
 
@@ -210,11 +188,9 @@ Public NotInheritable Class CliUtilTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that an invalid set of delimiters is rejected.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub WriteColorText_InvalidDelimiters_ThrowsArgumentException()
 
@@ -226,11 +202,9 @@ Public NotInheritable Class CliUtilTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that two different start/end delimiters are supported.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub WriteColorText_TwoDelimiters_AreSupported()
 

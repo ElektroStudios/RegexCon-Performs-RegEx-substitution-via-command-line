@@ -45,20 +45,16 @@ Imports System.Text
 
 Namespace UserInterface
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Manages the Help documentation of a console application, with support for colorization capabilities.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Public NotInheritable Class HelpSection
 
 #Region " Private Fields "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the name of the current process.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Private Shared ReadOnly processName As String =
             Process.GetCurrentProcess.MainModule.ModuleName
 
@@ -80,14 +76,12 @@ Namespace UserInterface
 
 #Region " Help Xml "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Contains help information such as author name, application syntax and example usages.
         ''' <para></para>
         ''' These strings are color-delimited to print a colorized output console,
         ''' using the <c>WriteColorText</c> methods written by ElektroStudios.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Public Shared ReadOnly Help As XElement =
             <Help>
                 <!-- Application title -->

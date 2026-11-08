@@ -21,21 +21,17 @@ Imports RegexCon.Types
 
 #Region " CommandlineParameter Tests "
 
-''' ----------------------------------------------------------------------------------------------------
 ''' <summary>
 ''' Unit tests for <see cref="CommandlineParameter(Of T)"/> and <see cref="CommandlineParameter"/> types.
 ''' </summary>
-''' ----------------------------------------------------------------------------------------------------
 <TestClass>
 Public NotInheritable Class CommandlineParameterTests
 
 #Region " Properties "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that all the properties keep the assigned values.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Properties_AssignedValues_AreReturned()
 
@@ -57,11 +53,9 @@ Public NotInheritable Class CommandlineParameterTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies the default state of a new instance.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Constructor_NewInstance_HasDefaultState()
 
@@ -80,11 +74,9 @@ Public NotInheritable Class CommandlineParameterTests
 
 #Region " Name / ShortName Validation "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a name that contains the separator character is rejected.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Name_ContainsSeparator_ThrowsArgumentException()
 
@@ -98,11 +90,9 @@ Public NotInheritable Class CommandlineParameterTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a short name that contains the separator character is rejected.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ShortName_ContainsSeparator_ThrowsArgumentException()
 
@@ -116,11 +106,9 @@ Public NotInheritable Class CommandlineParameterTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a name equal to the current short name is rejected.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Name_EqualsShortName_ThrowsArgumentException()
 
@@ -133,11 +121,9 @@ Public NotInheritable Class CommandlineParameterTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a short name equal to the current name is rejected.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ShortName_EqualsName_ThrowsArgumentException()
 
@@ -150,11 +136,9 @@ Public NotInheritable Class CommandlineParameterTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the name can contain any character when the separator was not assigned yet.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Name_SeparatorNotAssigned_AcceptsAnyCharacter()
 
@@ -164,11 +148,9 @@ Public NotInheritable Class CommandlineParameterTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a <see langword="Nothing"/> name is rejected with <see cref="ArgumentNullException"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Name_Nothing_ThrowsArgumentNullException()
 
@@ -181,14 +163,12 @@ Public NotInheritable Class CommandlineParameterTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the short name is optional, so <see langword="Nothing"/> and empty values are accepted.
     ''' <para></para>
     ''' Regression test: before v1.2, assigning a <see langword="Nothing"/> short name
     ''' threw a <see cref="NullReferenceException"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ShortName_NothingOrEmpty_IsAccepted()
 
@@ -210,11 +190,9 @@ Public NotInheritable Class CommandlineParameterTests
 
 #Region " Separator Validation "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a separator contained in the parameter name is rejected.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Separator_ContainedInName_ThrowsArgumentException()
 
@@ -228,14 +206,12 @@ Public NotInheritable Class CommandlineParameterTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a separator contained in the parameter short name is rejected.
     ''' <para></para>
     ''' Regression test: before v1.2 only the name was validated,
     ''' so a short name containing the separator was silently accepted.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Separator_ContainedInShortName_ThrowsArgumentException()
 
@@ -252,11 +228,9 @@ Public NotInheritable Class CommandlineParameterTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a valid separator is accepted.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Separator_NotContainedInNames_IsAccepted()
 
@@ -274,11 +248,9 @@ Public NotInheritable Class CommandlineParameterTests
 
 #Region " Widening Conversion "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the widening conversion to <see cref="CommandlineParameter"/> copies every property.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub WideningConversion_CopiesAllProperties()
 
@@ -303,13 +275,11 @@ Public NotInheritable Class CommandlineParameterTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a parameter without short name (as in the documented usage example) can be converted.
     ''' <para></para>
     ''' Regression test: before v1.2 this conversion threw a <see cref="NullReferenceException"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub WideningConversion_WithoutShortName_Succeeds()
 
@@ -328,11 +298,9 @@ Public NotInheritable Class CommandlineParameterTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the widening conversion creates a new independent instance every time.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub WideningConversion_CreatesIndependentInstances()
 

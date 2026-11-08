@@ -21,21 +21,17 @@ Imports RegexCon.Types
 
 #Region " CommandlineParameterCollection Tests "
 
-''' ----------------------------------------------------------------------------------------------------
 ''' <summary>
 ''' Unit tests for <see cref="CommandlineParameterCollection"/> type.
 ''' </summary>
-''' ----------------------------------------------------------------------------------------------------
 <TestClass>
 Public NotInheritable Class CommandlineParameterCollectionTests
 
 #Region " Add "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that distinct parameters are added in order.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Add_DistinctParameters_AddsInOrder()
 
@@ -52,11 +48,9 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a parameter with a duplicated name is rejected (case-insensitive).
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Add_DuplicatedName_ThrowsArgumentException()
 
@@ -72,11 +66,9 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a parameter with a duplicated short name is rejected (case-insensitive).
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Add_DuplicatedShortName_ThrowsArgumentException()
 
@@ -88,11 +80,9 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a parameter whose name equals the short name of an existing parameter is rejected.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Add_NameEqualsExistingShortName_ThrowsArgumentException()
 
@@ -104,11 +94,9 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that adding <see langword="Nothing"/> throws <see cref="ArgumentNullException"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Add_Nothing_ThrowsArgumentNullException()
 
@@ -122,13 +110,11 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that several parameters without short name can be added and found.
     ''' <para></para>
     ''' Regression test: before v1.2 this threw a <see cref="NullReferenceException"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Add_ParametersWithoutShortName_AreAddedAndFound()
 
@@ -147,11 +133,9 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that an empty or <see langword="Nothing"/> key does not match parameters without short name.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Contains_EmptyKey_DoesNotMatchParametersWithoutShortName()
 
@@ -171,11 +155,9 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
 #Region " AddRange "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that <see cref="CommandlineParameterCollection.AddRange"/> adds all the parameters.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub AddRange_DistinctParameters_AddsAll()
 
@@ -193,11 +175,9 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that <see cref="CommandlineParameterCollection.AddRange"/> rejects duplicated parameters.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub AddRange_DuplicatedParameters_ThrowsArgumentException()
 
@@ -212,11 +192,9 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that <see cref="CommandlineParameterCollection.AddRange"/> rejects <see langword="Nothing"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub AddRange_Nothing_ThrowsArgumentNullException()
 
@@ -231,11 +209,9 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
 #Region " Find / Contains / IndexOf / Indexer "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that parameters are found by name and by short name, case-insensitive.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Find_ByNameOrShortName_IsCaseInsensitive()
 
@@ -248,12 +224,10 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that searching an unknown parameter returns <see langword="Nothing"/>,
     ''' <see langword="False"/> and <c>-1</c> respectively.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Search_UnknownParameter_ReturnsNotFound()
 
@@ -266,11 +240,9 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that <see cref="CommandlineParameterCollection.IndexOf(String)"/> returns the zero-based index.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub IndexOf_ExistingParameter_ReturnsZeroBasedIndex()
 
@@ -283,11 +255,9 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the string indexer setter replaces the matching parameter.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Indexer_SetByName_ReplacesParameter()
 
@@ -301,11 +271,9 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the string indexer setter fails for an unknown parameter.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Indexer_SetUnknownName_ThrowsArgumentOutOfRangeException()
 
@@ -320,11 +288,9 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
 #Region " Remove "
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a parameter can be removed by its name or short name.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Remove_ByName_RemovesParameter()
 
@@ -339,11 +305,9 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that a parameter can be removed by its instance.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Remove_ByInstance_RemovesParameter()
 
@@ -357,11 +321,9 @@ Public NotInheritable Class CommandlineParameterCollectionTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that removing an unknown parameter throws <see cref="ArgumentException"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub Remove_UnknownParameter_ThrowsArgumentException()
 

@@ -22,19 +22,15 @@ Imports RegexCon.Types
 
 #Region " Parameters Tests "
 
-''' ----------------------------------------------------------------------------------------------------
 ''' <summary>
 ''' Unit tests for the parameter definitions of the application (<see cref="Parameters"/> module).
 ''' </summary>
-''' ----------------------------------------------------------------------------------------------------
 <TestClass>
 Public NotInheritable Class ParametersTests
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies the definition of the <c>/Input</c> parameter.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParamInput_Definition()
 
@@ -42,11 +38,9 @@ Public NotInheritable Class ParametersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies the definition of the <c>/Expression</c> parameter.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParamExpression_Definition()
 
@@ -54,11 +48,9 @@ Public NotInheritable Class ParametersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies the definition of the <c>/Substitution</c> parameter.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParamSubstitution_Definition()
 
@@ -66,11 +58,9 @@ Public NotInheritable Class ParametersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies the definition of the <c>/MatchCase</c> parameter.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ParamMatchCase_Definition()
 
@@ -78,11 +68,9 @@ Public NotInheritable Class ParametersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that all the application parameters can be registered together without name conflicts.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ApplicationParameters_RegisterWithoutConflicts()
 
@@ -92,12 +80,10 @@ Public NotInheritable Class ParametersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Verifies that the parameter definitions are not modified by parsing,
     ''' because the collection stores converted copies of them.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestMethod>
     Public Sub ApplicationParameters_ParsingDoesNotModifyDefinitions()
 
@@ -115,11 +101,9 @@ Public NotInheritable Class ParametersTests
 
     End Sub
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Asserts the definition of a parameter.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <param name="param">
     ''' The parameter to verify.
     ''' </param>
@@ -139,7 +123,6 @@ Public NotInheritable Class ParametersTests
     ''' <param name="isOptional">
     ''' The expected optional state.
     ''' </param>
-    ''' ----------------------------------------------------------------------------------------------------
     Private Shared Sub AssertDefinition(Of T)(ByVal param As CommandlineParameter(Of T),
                                               ByVal name As String,
                                               ByVal shortName As String,
