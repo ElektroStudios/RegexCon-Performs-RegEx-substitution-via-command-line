@@ -13,6 +13,8 @@ Option Infer Off
 
 #Region " Imports "
 
+Imports System.Text.RegularExpressions
+
 Imports RegexCon.Logic
 Imports RegexCon.Tools
 Imports RegexCon.Types
@@ -50,7 +52,8 @@ Namespace UserInterface
                 ErrorCallbacks.OnRegExValidationFailed(Fields.Expression)
 
             Else
-                Console.WriteLine(RegExUtil.Substitute(Fields.Input, Fields.Expression, Fields.Substitution, Fields.MatchCase))
+                Dim options As RegexOptions = If(Fields.MatchCase, RegexOptions.None, RegexOptions.IgnoreCase)
+                Console.WriteLine(Regex.Replace(Fields.Input, Fields.Expression, Fields.Substitution, options))
                 Environment.Exit(exitCode:=0)
 
             End If
