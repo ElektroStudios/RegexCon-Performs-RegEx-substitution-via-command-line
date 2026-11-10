@@ -53,7 +53,7 @@ Namespace UserInterface
 
             Else
                 Dim options As RegexOptions = If(Fields.MatchCase, RegexOptions.None, RegexOptions.IgnoreCase)
-                Console.WriteLine(Regex.Replace(Fields.Input, Fields.Expression, Fields.Substitution, options))
+                Console.WriteLine(Regex.Replace(Fields.Input, Fields.Expression, Fields.Substitution, options, TimeSpan.FromSeconds(60)))
                 Environment.Exit(exitCode:=0)
 
             End If
