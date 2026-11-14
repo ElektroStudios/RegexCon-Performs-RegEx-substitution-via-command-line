@@ -13,6 +13,7 @@ Option Infer Off
 
 #Region " Imports "
 
+Imports System.Text
 Imports System.Text.RegularExpressions
 
 Imports RegexCon.Logic
@@ -27,19 +28,25 @@ Namespace UserInterface
 
     Public Module Main
 
+        ''' <summary>
+        ''' Defines the main entry point of the command-line application.
+        ''' </summary>
         Sub Main()
 
-            Console.Title = HelpSection.Help.<Title>.Value
+            'Console.Title = HelpSection.Help.<Title>.Value
 
-            params = New CommandlineParameterCollection
-            With params
+            Console.InputEncoding = Encoding.UTF8
+            Console.OutputEncoding = Encoding.UTF8
+
+            Params = New CommandlineParameterCollection
+            With Params
                 .Add(Parameters.ParamInput)
                 .Add(Parameters.ParamExpression)
                 .Add(Parameters.ParamSubstitution)
                 .Add(Parameters.ParamMatchCase)
             End With
 
-            Parsers.ParseArguments(params,
+            Parsers.ParseArguments(Params,
                                    AddressOf ErrorCallbacks.OnSyntaxError,
                                    AddressOf ErrorCallbacks.OnMissingParameterRequired,
                                    AddressOf ErrorCallbacks.OnDuplicatedParameter,
